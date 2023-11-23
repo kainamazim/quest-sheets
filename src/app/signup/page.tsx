@@ -1,7 +1,7 @@
-import SignUpPage from "@/pages/SignUp";
+import SignUpPage from "@/content/SignUp";
 
 const SignUp = () => {
-  return <SignUpPage />;
+    return <SignUpPage />;
 };
 
 export default SignUp;

@@ -1,0 +1,114 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  username String @unique
+  password String
+
+  items          Item[]
+  CharacterSheet CharacterSheet[]
+}
+
+enum ItemRarity {
+  common
+  uncommon
+  rare
+  legendary
+  supreme
+}
+
+model Item {
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author   User? @relation(fields: [authorId], references: [id])
+  authorId Int?
+
+  rarity ItemRarity @default(common)
+
+  title       String  
+  description String?
+
+  damage         Int? @db.SmallInt
+  activationCost Int? @db.SmallInt
+
+  rollTheDie Boolean @default(false)
+
+  characterSheets CharacterSheet[]
+}
+
+model CharacterSheet {
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name        String
+  description String
+
+  currentHitPoints       Int @db.SmallInt
+  currentAdventurePoints Int @db.SmallInt
+
+  role   Role @relation(fields: [roleId], references: [id])
+  roleId Int
+
+  author   User @relation(fields: [authorId], references: [id])
+  authorId Int
+
+  items     Item[]
+  abilities Ability[]
+}
+
+model Role {
+  id Int @id @default(autoincrement())
+
+  title       String @unique
+  description String
+
+  characterSheets CharacterSheet[]
+  learningPaths   LearningPath[]
+}
+
+model LearningPath {
+  id Int @id @default(autoincrement())
+
+  role   Role @relation(fields: [roleId], references: [id])
+  roleId Int
+
+  title String
+
+  abilities Ability[]
+
+  @@unique([roleId, title])
+}
+
+model Ability {
+  id Int @id @default(autoincrement())
+
+  title       String
+  description String
+
+  activationCost Int?     @db.SmallInt
+  rollTheDie     Boolean? @default(false)
+
+  characterSheets CharacterSheet[]
+
+  learningPath   LearningPath @relation(fields: [learningPathId], references: [id])
+  learningPathId Int
+  order          Int
+
+  @@unique([learningPathId, order])
+}

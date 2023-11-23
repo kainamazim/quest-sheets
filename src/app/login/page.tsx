@@ -1,7 +1,7 @@
-import LoginPage from "@/pages/Login";
+import LoginPage from "@/content/Login";
 
 const Login = () => {
-  return <LoginPage />;
+    return <LoginPage />;
 };
 
 export default Login;

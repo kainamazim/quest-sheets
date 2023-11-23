@@ -1,28 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 
-import ThemeRegistry from "./ThemeRegistry";
-
-const inter = Inter({ subsets: ["latin"] });
+import AppProvider from "@/providers/AppProvider";
+import { pullquoteText } from "@/styles/font";
 
 export const metadata: Metadata = {
-  title: "Quest Sheets",
-  description: "Character Sheet Manager for Quest",
+    title: "Quest Sheets",
+    description: "Character Sheet Manager for Quest",
 };
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
 const RootLayout = ({ children }: RootLayoutProps) => {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeRegistry>{children}</ThemeRegistry>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body className={pullquoteText.className}>
+                <AppProvider>{children}</AppProvider>
+            </body>
+        </html>
+    );
 };
 
 export default RootLayout;

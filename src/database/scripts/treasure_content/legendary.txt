@@ -1,0 +1,27 @@
+A MAgiCIAN'S key (D 146, P 189): An obsidian skeleton key that creates a private plane. [5 AP]
+ANCIENt RANGER'S POUCH (D 146, P 189):  A pouch filled with seeds that grow into sentient tree creatures.
+BANE (D 146, P 189): A magical dagger that tries to charm nearby creatures. <2>
+BLOOD PACT (D 146, P 189): A sentient blade that curses whoever picks it up to feel an unquenchable bloodthirst. <4>
+CLoAK OF A HUNDRED BILLIon stARS (D 146, P 189): A magic cloak that allows an Invoker to commune with the stars.
+cONWAy's cOMRADES (D 147, P 190): A set of magic toy figurines that can come alive to do battle. [4 AP]
+cOSMIc PURSE (D 147, P 190): A magic bag that can hold an unlimited number of items.
+CREIghtON'S FASCINAtORS (D 147, P 190): A pair of tall black boots that cast an aura of leadership. [5 AP]
+echo (D 148, P 191): A ring that duplicates spells and reflects them.
+FABLE (D 148, P 191): A weapon handed down through generations that records the deeds of its wielder. <3>
+GUILE (D 148, P 191): A cameo brooch that can create an illusory visage. [1 AP]
+GUNGRox's cOIN (D 148, P 191): A smooth platinum coin that randomize a player's role.
+HARMONY (D 148, P 192): A weathered wooden lute that seeks music through the omniverse. [5 AP]
+HARPER'S HAVEN (D 149, P 192): A small stone figurine with world-shaking power. [10 AP]
+JUNE'S BLANKET (D 149, P 192): A patchwork blanket that offers love and comfort. [1/4 AP]
+LORELAI'S WAND (D 149, P 192): A magic wand that imbues the wielder with incredible power.
+LOREN'S LUMINous stARGLASS (D 150, P 192): A magic telescope that carries its wielder through the stars. [3/9 AP]
+MULtiviOUS MAP (D 150, P 193): A sentient map of the stars that loves to pontificate about possibility. [1 AP]
+NIghTMARE (D 150, P 193): A greatsword that gives walking nightmares. <3>
+PRISMAtic CIRCLET (D 150, P 193): This crystal crown that projects a major illusion. [3 AP]
+RESPLENDENt PLAte (D 151, P 194): An indomitable breastplate that makes the wearer resistant to attacks.
+REBELLIon (D 151, P 194): An ancient bronze shield that lights the fires of independence. [4 AP]
+SHADOW (D 151, P 194): A magic shortblade forged by a malevolent god that reaps souls. <3>
+the cOSMIc CRUISER (D 151, P 194): A magic starship that can travel through space and the omniverse. [3/9 AP]
+the tOLL (D 152, P 195): An iridescent coin that offers eternal paradise.
+UNIty (D 152, P 195): A magic pin allowing the wearer to comprehend languages.
+vOL (D 152, P 195): A magic spear that can become a bolt of lightning. <3>
