@@ -24,7 +24,7 @@ const Logo = () => {
                     style={{
                         fontFamily: headingText.style.fontFamily,
                         textTransform: "uppercase",
-                        fontWeight: 900,
+                        fontWeight: 700,
                         letterSpacing: 0.2,
                         fontSize: "23px",
                     }}
