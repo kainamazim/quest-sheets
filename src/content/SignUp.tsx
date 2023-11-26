@@ -118,6 +118,7 @@ const SignUpPage: FC = () => {
                                 minLength: 4,
                                 maxLength: 32,
                             }}
+                            helperText="*Must contain at least 4 characters"
                         />
                         <PasswordField
                             fullWidth

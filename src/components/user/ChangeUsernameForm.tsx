@@ -100,6 +100,7 @@ const ChangeUsernameForm: FC<ChangeUsernameFormProps> = ({ user, updateSession }
                 }}
                 error={error}
                 disabled={!isChange}
+                helperText="*Must contain at least 4 characters"
             />
             <Box
                 sx={{
