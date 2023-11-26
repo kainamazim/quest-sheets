@@ -49,7 +49,7 @@ const LoginPage: FC = () => {
                     severity: "success",
                 });
 
-                router.push("/");
+                router.push("/sheets");
             } else {
                 setSnackbar({
                     message: error + "!" ?? "",

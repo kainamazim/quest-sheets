@@ -76,7 +76,7 @@ const Sidebar = () => {
                             title={"user account"}
                             items={[
                                 {
-                                    label: "account",
+                                    label: "Account Details",
                                     route: "/account",
                                     icon: PersonSharpIcon,
                                 },
