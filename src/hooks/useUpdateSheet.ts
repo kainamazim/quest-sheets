@@ -19,13 +19,13 @@ const useUpdateSheet = ({ successCallback }: UseUpdateSheetProps) => {
     const result = useMutation<unknown, unknown, FullSheet | NewSheet>({
         mutationFn: async (newSheet) => await updateSheet(newSheet),
         onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ["sheet"] });
+            await queryClient.refetchQueries();
+
             setSnackbarExternal({
                 severity: "success",
                 message: "Sheet updated successfully!",
             });
-
-            await queryClient.invalidateQueries({ queryKey: ["sheet"] });
-            await queryClient.refetchQueries();
 
             if (successCallback) successCallback();
         },
