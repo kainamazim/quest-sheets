@@ -5,7 +5,15 @@ import { type FC, useContext, useEffect, useState } from "react";
 import ArrowBackSharpIcon from "@mui/icons-material/ArrowBackSharp";
 import ArrowForwardSharpIcon from "@mui/icons-material/ArrowForwardSharp";
 import CheckSharpIcon from "@mui/icons-material/CheckSharp";
-import { Box, Button, Stack, Step, StepLabel, Stepper } from "@mui/material";
+import {
+    Box,
+    Button,
+    CircularProgress,
+    Stack,
+    Step,
+    StepLabel,
+    Stepper,
+} from "@mui/material";
 import type { Item, Role } from "@prisma/client";
 
 import { PageSectionTitle } from "@/components/@common/display";
@@ -195,8 +203,17 @@ const SheetForm: FC<SheetFormProps> = ({
                 {isLastStep ? (
                     <Button
                         onClick={handleSubmit}
+                        sx={{
+                            cursor: loading ? "wait" : "pointer",
+                        }}
                         disabled={loading}
-                        endIcon={<CheckSharpIcon fontSize="small" />}
+                        endIcon={
+                            loading ? (
+                                <CircularProgress size={20} color="inherit" />
+                            ) : (
+                                <CheckSharpIcon />
+                            )
+                        }
                     >
                         {"Submit"}
                     </Button>

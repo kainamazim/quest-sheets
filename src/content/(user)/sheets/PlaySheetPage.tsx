@@ -350,7 +350,16 @@ const PlaySheetPageContent: FC<PlaySheetPageProps> = ({ sheet: defaultSheet }) =
                             <Button
                                 onClick={handleSubmit}
                                 disabled={loading}
-                                endIcon={<CheckSharp fontSize="small" />}
+                                sx={{
+                                    cursor: loading ? "wait" : "pointer",
+                                }}
+                                endIcon={
+                                    loading ? (
+                                        <CircularProgress size={20} color="inherit" />
+                                    ) : (
+                                        <CheckSharp />
+                                    )
+                                }
                             >
                                 {"Submit"}
                             </Button>

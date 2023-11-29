@@ -157,7 +157,7 @@ const ItemForm: FC<ItemFormProps> = ({
                 />
             </Box>
             <Button
-                sx={{ marginTop: 6 }}
+                sx={{ marginTop: 6, cursor: loading ? "wait" : "pointer" }}
                 onClick={handleSubmit}
                 disabled={loading}
                 endIcon={
