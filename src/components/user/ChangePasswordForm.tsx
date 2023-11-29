@@ -108,6 +108,7 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ user }) => {
                 <PasswordField
                     fullWidth
                     label="Current Password"
+                    value={form.currentPassword}
                     onChange={({ target }) => {
                         setForm((prev) => ({
                             ...prev,
@@ -127,6 +128,7 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ user }) => {
                 <PasswordField
                     fullWidth
                     label="New Password"
+                    value={form.newPassword}
                     onChange={({ target }) => {
                         setForm((prev) => ({
                             ...prev,
@@ -144,6 +146,7 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ user }) => {
                 <PasswordField
                     fullWidth
                     label="Confirm New Password"
+                    value={form.confirmNewPassword}
                     onChange={({ target }) => {
                         setForm((prev) => ({
                             ...prev,
