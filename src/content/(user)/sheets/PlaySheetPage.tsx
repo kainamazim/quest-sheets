@@ -1,6 +1,6 @@
 "use client";
 
-import { type FC, useContext, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 
 import BackHandSharpIcon from "@mui/icons-material/BackHandSharp";
 import BedtimeOffSharpIcon from "@mui/icons-material/BedtimeOffSharp";
@@ -19,10 +19,9 @@ import {
     Typography,
 } from "@mui/material";
 import { type Ability, type Item } from "@prisma/client";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import getSingleSheet from "@/api/sheets/getSingleSheet";
-import updateSheet from "@/api/sheets/updateSheet";
 import {
     ActionCard,
     PageSectionTitle,
@@ -36,7 +35,7 @@ import {
 } from "@/components/@common/tags";
 import { rarityTagClass } from "@/components/@common/tags/RarityTag";
 import ItemTags from "@/components/item/ItemTags";
-import { MainLayoutContext } from "@/providers/MainLayoutProvider";
+import useUpdateSheet from "@/hooks/useUpdateSheet";
 import { type FullSheet } from "@/types";
 
 interface PlaySheetPageProps {
@@ -142,23 +141,7 @@ const PlaySheetPageContent: FC<PlaySheetPageProps> = ({ sheet: defaultSheet }) =
         setSnackbarState((prev) => ({ ...prev, open: false }));
     };
 
-    const { setSnackbar: setSnackbarExternal } = useContext(MainLayoutContext);
-
-    const { mutate, isPending: loading } = useMutation<unknown, unknown, FullSheet>({
-        mutationFn: async (newSheet) => await updateSheet(newSheet),
-        onSuccess: () => {
-            setSnackbarExternal({
-                severity: "success",
-                message: "Sheet updated successfully!",
-            });
-        },
-        onError: () => {
-            setSnackbarExternal({
-                severity: "error",
-                message: "Server error!",
-            });
-        },
-    });
+    const { mutate, isPending: loading } = useUpdateSheet({});
 
     const handleSubmit = () => {
         mutate(sheet);
@@ -569,18 +552,21 @@ const PlaySheetPageContent: FC<PlaySheetPageProps> = ({ sheet: defaultSheet }) =
 };
 
 const PlaySheetPage: FC<{ sheetId: FullSheet["id"] }> = ({ sheetId }) => {
-    const { data: sheet } = useQuery({
-        queryKey: ["user-sheet-play-by-id", sheetId],
+    const {
+        data: sheet,
+        refetch,
+        isPending,
+    } = useQuery({
+        queryKey: ["sheet", "play", sheetId],
         queryFn: async () => await getSingleSheet(sheetId),
-        refetchOnMount: true,
         staleTime: Infinity,
     });
 
-    console.log({ sheet });
+    useEffect(() => {
+        void refetch();
+    }, [refetch]);
 
-    return sheet ? (
-        <PlaySheetPageContent sheet={sheet} />
-    ) : (
+    return isPending || typeof sheet === "undefined" ? (
         <Box
             minHeight={250}
             sx={{
@@ -591,6 +577,8 @@ const PlaySheetPage: FC<{ sheetId: FullSheet["id"] }> = ({ sheetId }) => {
         >
             <CircularProgress />
         </Box>
+    ) : (
+        <PlaySheetPageContent sheet={sheet} />
     );
 };
 

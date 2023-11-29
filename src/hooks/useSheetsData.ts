@@ -22,7 +22,7 @@ const useSheetsData = ({
         isPending,
         refetch,
     } = useQuery({
-        queryKey: ["user-sheets", filter],
+        queryKey: ["sheet", "list", filter],
         queryFn: async () => await getSheets(filter),
         initialData: initialSheets,
         staleTime: Infinity,

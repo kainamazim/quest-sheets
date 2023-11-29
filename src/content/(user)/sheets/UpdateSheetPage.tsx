@@ -1,17 +1,16 @@
 "use client";
 
-import { type FC, useContext, useEffect } from "react";
+import { type FC, useEffect } from "react";
 
 import { Box, CircularProgress, Stack } from "@mui/material";
 import { type Item } from "@prisma/client";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 import getSingleSheet from "@/api/sheets/getSingleSheet";
-import updateSheet from "@/api/sheets/updateSheet";
 import { PageTitle } from "@/components/@common/display";
-import SheetForm, { type FormSheet } from "@/components/sheet/SheetForm/SheetForm";
-import { MainLayoutContext } from "@/providers/MainLayoutProvider";
+import SheetForm from "@/components/sheet/SheetForm/SheetForm";
+import useUpdateSheet from "@/hooks/useUpdateSheet";
 import { type FullRole, type FullSheet } from "@/types";
 
 interface UpdateSheetPageProps {
@@ -32,22 +31,10 @@ const UpdateSheetPageContent: FC<UpdateSheetPageContentProps> = ({
     sheet,
 }) => {
     const router = useRouter();
-    const { setSnackbar } = useContext(MainLayoutContext);
 
-    const { mutate, isPending } = useMutation<unknown, unknown, FormSheet>({
-        mutationFn: async (newSheet) => await updateSheet(newSheet),
-        onSuccess: () => {
-            setSnackbar({
-                severity: "success",
-                message: "Sheet updated successfully!",
-            });
+    const { mutate, isPending } = useUpdateSheet({
+        successCallback: () => {
             router.push("/sheets");
-        },
-        onError: () => {
-            setSnackbar({
-                severity: "error",
-                message: "Server error!",
-            });
         },
     });
 
@@ -68,22 +55,21 @@ const UpdateSheetPageContent: FC<UpdateSheetPageContentProps> = ({
 };
 
 const UpdateSheetPage: FC<UpdateSheetPageProps> = ({ sheetId, items, roles }) => {
-    const { data: sheet, refetch } = useQuery({
-        queryKey: ["user-sheet-update-by-id", sheetId],
+    const {
+        data: sheet,
+        refetch,
+        isPending,
+    } = useQuery({
+        queryKey: ["sheet", "update", sheetId],
         queryFn: async () => await getSingleSheet(sheetId),
-        refetchOnMount: true,
         staleTime: Infinity,
     });
-
-    console.log({ sheet });
 
     useEffect(() => {
         void refetch();
     }, [refetch]);
 
-    return sheet ? (
-        <UpdateSheetPageContent sheet={sheet} roles={roles} items={items} />
-    ) : (
+    return isPending || typeof sheet === "undefined" ? (
         <Box
             minHeight={250}
             sx={{
@@ -94,6 +80,8 @@ const UpdateSheetPage: FC<UpdateSheetPageProps> = ({ sheetId, items, roles }) =>
         >
             <CircularProgress />
         </Box>
+    ) : (
+        <UpdateSheetPageContent sheet={sheet} roles={roles} items={items} />
     );
 };
 

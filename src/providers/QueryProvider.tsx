@@ -21,6 +21,7 @@ const QueryProvider: FC<QueryProviderProps> = ({ children }) => {
                 },
             }),
     );
+
     return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 };
 
