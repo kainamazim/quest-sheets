@@ -1,15 +1,12 @@
 import LogoutSharpIcon from "@mui/icons-material/LogoutSharp";
 import { ListItem, ListItemButton, ListItemIcon, Typography } from "@mui/material";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 import { pullquoteText } from "@/styles/font";
 
 const LogoutItem = () => {
-    const router = useRouter();
     const handleClick = () => {
-        router.push("/login");
-        signOut()
+        signOut({ callbackUrl: "/login" })
             .then(() => {})
             .catch((error) => {
                 console.error(error);
