@@ -129,14 +129,7 @@ const SheetForm: FC<SheetFormProps> = ({
     };
 
     const handleAbilityStep = () => {
-        if (sheet.abilities.length < 6) {
-            setSnackbar({
-                severity: "error",
-                message: "You must choose at least 6 abilities!",
-            });
-        } else {
-            handleNext();
-        }
+        handleNext();
     };
 
     const handleSubmit = () => {
