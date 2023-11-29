@@ -8,10 +8,9 @@ import { pullquoteText } from "@/styles/font";
 const LogoutItem = () => {
     const router = useRouter();
     const handleClick = () => {
+        router.push("/login");
         signOut()
-            .then(() => {
-                router.push("/login");
-            })
+            .then(() => {})
             .catch((error) => {
                 console.error(error);
             });
