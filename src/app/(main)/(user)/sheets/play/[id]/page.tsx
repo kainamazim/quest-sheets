@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 
 import PlaySheetPage from "@/content/(user)/sheets/PlaySheetPage";
 import getUserSingleSheet from "@/services/sheet/getUserSingleSheet";
-import type { FullSheet } from "@/types";
 
 const fetchData = async (sheetId: CharacterSheet["id"]) => {
     const sheet = await getUserSingleSheet(sheetId);
@@ -21,11 +20,11 @@ const PlaySheet: NextPage<PlaySheetProps> = async ({ params: { id } }) => {
 
     const router = useRouter();
 
-    if (sheet == null) {
-        router.push("/login");
+    if (sheet) {
+        return <PlaySheetPage sheet={sheet} />;
     }
 
-    return <PlaySheetPage sheet={sheet as FullSheet} />;
+    router.push("/login");
 };
 
 export default PlaySheet;

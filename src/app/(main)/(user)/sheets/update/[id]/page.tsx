@@ -6,7 +6,6 @@ import UpdateSheetPage from "@/content/(user)/sheets/UpdateSheetPage";
 import getAvailableItems from "@/services/item/getAvailableItems";
 import getManyRoles from "@/services/role/getManyRoles";
 import getUserSingleSheet from "@/services/sheet/getUserSingleSheet";
-import type { FullSheet } from "@/types";
 
 const fetchData = async (sheetId: CharacterSheet["id"]) => {
     const roles = await getManyRoles();
@@ -27,11 +26,11 @@ const UpdateSheet: NextPage<UpdateSheetProps> = async ({ params: { id } }) => {
 
     const router = useRouter();
 
-    if (sheet == null) {
-        router.push("/login");
+    if (sheet) {
+        return <UpdateSheetPage sheet={sheet} roles={roles} items={items} />;
     }
 
-    return <UpdateSheetPage sheet={sheet as FullSheet} roles={roles} items={items} />;
+    router.push("/login");
 };
 
 export default UpdateSheet;
