@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { Header, Sidebar, headerHeight } from "@/components/@common/layouts";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 
-const customPaperRoutes = ["/", "/rules"];
+const customPaperRoutes = ["/", "/rules", "/treasure"];
 
 const Wrapper: FC<PropsWithChildren> = ({ children }) => {
     const { handleCloseSidebar } = useContext(MainLayoutContext);
