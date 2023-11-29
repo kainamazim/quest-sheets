@@ -32,7 +32,7 @@ const RoleMultiSelect: FC<RoleMultiSelectProps> = ({
     };
 
     return (
-        <Box sx={{ minWidth: 424 }}>
+        <Box sx={{ flexBasis: 424 }}>
             <FormControl fullWidth size="small">
                 <InputLabel id={labelId}>{label}</InputLabel>
                 <Select

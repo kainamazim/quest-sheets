@@ -36,7 +36,7 @@ const RarityMultiSelect: FC<RarityMultiSelectProps> = ({
     };
 
     return (
-        <Box sx={{ minWidth: 364 }}>
+        <Box sx={{ flexBasis: 364 }}>
             <FormControl fullWidth size="small">
                 <InputLabel id={labelId}>{label}</InputLabel>
                 <Select
@@ -54,11 +54,7 @@ const RarityMultiSelect: FC<RarityMultiSelectProps> = ({
                         return (
                             <Box sx={{ display: "flex", gap: 1 }}>
                                 {selectedRarities.map((value, index) => (
-                                    <RarityTag
-                                        key={index}
-                                        rarity={value as Item["rarity"]}
-                                        active
-                                    />
+                                    <RarityTag key={index} rarity={value} active />
                                 ))}
                             </Box>
                         );

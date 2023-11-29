@@ -87,7 +87,7 @@ const SheetFilter: FC<RoleFilterProps> = ({
                     onClick={() => {
                         setFilter(externalDefaultFilter);
                     }}
-                    sx={{ minWidth: 128 }}
+                    sx={{ flexBasis: 128 }}
                 >
                     {"Reset Filter"}
                 </Button>

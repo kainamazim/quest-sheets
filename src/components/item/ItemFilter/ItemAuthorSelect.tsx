@@ -33,7 +33,7 @@ const ItemAuthorSelect: FC<ItemAuthorSelectProps> = ({
     };
 
     return (
-        <Box sx={{ minWidth: 164 }}>
+        <Box sx={{ flexBasis: 164 }}>
             <FormControl fullWidth>
                 <InputLabel id={labelId}>{label}</InputLabel>
                 <Select

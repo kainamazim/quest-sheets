@@ -1,4 +1,4 @@
-import { type FC, useState } from "react";
+import { type FC } from "react";
 
 import { Stack } from "@mui/material";
 import { type CharacterSheet } from "@prisma/client";
@@ -15,19 +15,16 @@ const AdventurePointField: FC<AdventurePointFieldProps> = ({
     defaultValue,
     onChange,
 }) => {
-    const [adventurePoints, setAdventurePoints] =
-        useState<CharacterSheet["currentAdventurePoints"]>(defaultValue);
     return (
         <Stack direction={"row"} alignItems={"flex-end"} gap={1}>
             <NumberField
                 id={"item-activation-cost"}
                 label={"Adventure Points"}
-                value={adventurePoints ?? 0}
+                value={defaultValue ?? 0}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     const newAdventurePoints = Number(event.target.value);
 
                     if (newAdventurePoints >= 0 && newAdventurePoints <= 99) {
-                        setAdventurePoints(newAdventurePoints);
                         onChange(newAdventurePoints);
                     }
                 }}
@@ -36,7 +33,7 @@ const AdventurePointField: FC<AdventurePointFieldProps> = ({
                 }}
             />
             <AdventurePointTag
-                adventurePoints={adventurePoints}
+                adventurePoints={defaultValue}
                 title={"Adventure Points"}
             />
         </Stack>

@@ -93,7 +93,7 @@ const ItemFilter: FC<ItemFilterProps> = ({
                     onClick={() => {
                         setFilter(externalDefaultFilter);
                     }}
-                    sx={{ minWidth: 128 }}
+                    sx={{ flexBasis: 128 }}
                 >
                     {"Reset Filter"}
                 </Button>
