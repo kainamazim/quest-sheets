@@ -1,6 +1,5 @@
 import { type CharacterSheet } from "@prisma/client";
 import { type NextPage } from "next";
-import { useRouter } from "next/navigation";
 
 import UpdateSheetPage from "@/content/(user)/sheets/UpdateSheetPage";
 import getAvailableItems from "@/services/item/getAvailableItems";
@@ -24,13 +23,11 @@ interface UpdateSheetProps {
 const UpdateSheet: NextPage<UpdateSheetProps> = async ({ params: { id } }) => {
     const { roles, items = [], sheet } = await fetchData(Number(id));
 
-    const router = useRouter();
-
     if (sheet) {
         return <UpdateSheetPage sheet={sheet} roles={roles} items={items} />;
     }
 
-    router.push("/login");
+    return null;
 };
 
 export default UpdateSheet;

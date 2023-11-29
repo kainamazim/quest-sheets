@@ -1,6 +1,5 @@
 import { type CharacterSheet } from "@prisma/client";
 import { type NextPage } from "next";
-import { useRouter } from "next/navigation";
 
 import PlaySheetPage from "@/content/(user)/sheets/PlaySheetPage";
 import getUserSingleSheet from "@/services/sheet/getUserSingleSheet";
@@ -18,13 +17,11 @@ interface PlaySheetProps {
 const PlaySheet: NextPage<PlaySheetProps> = async ({ params: { id } }) => {
     const { sheet } = await fetchData(Number(id));
 
-    const router = useRouter();
-
     if (sheet) {
         return <PlaySheetPage sheet={sheet} />;
     }
 
-    router.push("/login");
+    return null;
 };
 
 export default PlaySheet;
