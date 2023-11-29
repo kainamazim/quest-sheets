@@ -569,14 +569,14 @@ const PlaySheetPageContent: FC<PlaySheetPageProps> = ({ sheet: defaultSheet }) =
 };
 
 const PlaySheetPage: FC<{ sheetId: FullSheet["id"] }> = ({ sheetId }) => {
-    const { data: sheet, refetch } = useQuery({
+    const { data: sheet } = useQuery({
         queryKey: ["user-sheet-play-by-id", sheetId],
         queryFn: async () => await getSingleSheet(sheetId),
+        refetchOnMount: true,
+        staleTime: Infinity,
     });
 
-    useEffect(() => {
-        void refetch();
-    }, [refetch]);
+    console.log({ sheet });
 
     return sheet ? (
         <PlaySheetPageContent sheet={sheet} />

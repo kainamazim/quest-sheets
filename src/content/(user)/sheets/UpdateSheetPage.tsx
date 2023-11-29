@@ -71,7 +71,11 @@ const UpdateSheetPage: FC<UpdateSheetPageProps> = ({ sheetId, items, roles }) =>
     const { data: sheet, refetch } = useQuery({
         queryKey: ["user-sheet-update-by-id", sheetId],
         queryFn: async () => await getSingleSheet(sheetId),
+        refetchOnMount: true,
+        staleTime: Infinity,
     });
+
+    console.log({ sheet });
 
     useEffect(() => {
         void refetch();
