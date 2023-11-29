@@ -1,19 +1,15 @@
-import { type CharacterSheet } from "@prisma/client";
 import { type NextPage } from "next";
 
 import UpdateSheetPage from "@/content/(user)/sheets/UpdateSheetPage";
 import getAvailableItems from "@/services/item/getAvailableItems";
 import getManyRoles from "@/services/role/getManyRoles";
-import getUserSingleSheet from "@/services/sheet/getUserSingleSheet";
 
-const fetchData = async (sheetId: CharacterSheet["id"]) => {
+const fetchData = async () => {
     const roles = await getManyRoles();
 
     const items = await getAvailableItems();
 
-    const sheet = await getUserSingleSheet(sheetId);
-
-    return { roles, items, sheet };
+    return { roles, items };
 };
 
 interface UpdateSheetProps {
@@ -21,13 +17,9 @@ interface UpdateSheetProps {
 }
 
 const UpdateSheet: NextPage<UpdateSheetProps> = async ({ params: { id } }) => {
-    const { roles, items = [], sheet } = await fetchData(Number(id));
+    const { roles, items = [] } = await fetchData();
 
-    if (sheet) {
-        return <UpdateSheetPage sheet={sheet} roles={roles} items={items} />;
-    }
-
-    return null;
+    return <UpdateSheetPage sheetId={Number(id)} roles={roles} items={items} />;
 };
 
 export default UpdateSheet;

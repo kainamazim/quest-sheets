@@ -10,6 +10,7 @@ import NightsStaySharpIcon from "@mui/icons-material/NightsStaySharp";
 import {
     Box,
     Button,
+    CircularProgress,
     Grow,
     Paper,
     Snackbar,
@@ -18,8 +19,9 @@ import {
     Typography,
 } from "@mui/material";
 import { type Ability, type Item } from "@prisma/client";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
+import getSingleSheet from "@/api/sheets/getSingleSheet";
 import updateSheet from "@/api/sheets/updateSheet";
 import {
     ActionCard,
@@ -102,7 +104,7 @@ export type SetFormSheetField = <T extends keyof FullSheet>(
 
 export type FormSheetErrors = Array<keyof FullSheet>;
 
-const PlaySheetPage: FC<PlaySheetPageProps> = ({ sheet: defaultSheet }) => {
+const PlaySheetPageContent: FC<PlaySheetPageProps> = ({ sheet: defaultSheet }) => {
     const [sheet, setSheet] = useState(defaultSheet);
     const [snackbar, setSnackbarState] = useState<SnackbarState>({
         open: false,
@@ -563,6 +565,32 @@ const PlaySheetPage: FC<PlaySheetPageProps> = ({ sheet: defaultSheet }) => {
                 </Paper>
             </Snackbar>
         </>
+    );
+};
+
+const PlaySheetPage: FC<{ sheetId: FullSheet["id"] }> = ({ sheetId }) => {
+    const { data: sheet, refetch } = useQuery({
+        queryKey: ["user-sheet-play-by-id", sheetId],
+        queryFn: async () => await getSingleSheet(sheetId),
+    });
+
+    useEffect(() => {
+        void refetch();
+    }, [refetch]);
+
+    return sheet ? (
+        <PlaySheetPageContent sheet={sheet} />
+    ) : (
+        <Box
+            minHeight={250}
+            sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <CircularProgress />
+        </Box>
     );
 };
 

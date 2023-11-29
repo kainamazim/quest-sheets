@@ -1,12 +1,13 @@
 "use client";
 
-import { type FC, useContext } from "react";
+import { type FC, useContext, useEffect } from "react";
 
-import { Stack } from "@mui/material";
+import { Box, CircularProgress, Stack } from "@mui/material";
 import { type Item } from "@prisma/client";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
+import getSingleSheet from "@/api/sheets/getSingleSheet";
 import updateSheet from "@/api/sheets/updateSheet";
 import { PageTitle } from "@/components/@common/display";
 import SheetForm, { type FormSheet } from "@/components/sheet/SheetForm/SheetForm";
@@ -16,10 +17,20 @@ import { type FullRole, type FullSheet } from "@/types";
 interface UpdateSheetPageProps {
     roles: FullRole[];
     items: Item[];
+    sheetId: FullSheet["id"];
+}
+
+interface UpdateSheetPageContentProps {
+    roles: FullRole[];
+    items: Item[];
     sheet: FullSheet;
 }
 
-const UpdateSheetPage: FC<UpdateSheetPageProps> = ({ roles, items, sheet }) => {
+const UpdateSheetPageContent: FC<UpdateSheetPageContentProps> = ({
+    roles,
+    items,
+    sheet,
+}) => {
     const router = useRouter();
     const { setSnackbar } = useContext(MainLayoutContext);
 
@@ -53,6 +64,32 @@ const UpdateSheetPage: FC<UpdateSheetPageProps> = ({ roles, items, sheet }) => {
                 }}
             />
         </Stack>
+    );
+};
+
+const UpdateSheetPage: FC<UpdateSheetPageProps> = ({ sheetId, items, roles }) => {
+    const { data: sheet, refetch } = useQuery({
+        queryKey: ["user-sheet-update-by-id", sheetId],
+        queryFn: async () => await getSingleSheet(sheetId),
+    });
+
+    useEffect(() => {
+        void refetch();
+    }, [refetch]);
+
+    return sheet ? (
+        <UpdateSheetPageContent sheet={sheet} roles={roles} items={items} />
+    ) : (
+        <Box
+            minHeight={250}
+            sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <CircularProgress />
+        </Box>
     );
 };
 
