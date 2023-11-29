@@ -18,6 +18,7 @@ const Header = () => {
             sx={(theme) => ({
                 zIndex: theme.zIndex.drawer + 1,
                 height: headerHeight,
+                backgroundColor: theme.palette.background.paper,
             })}
         >
             <Toolbar>
