@@ -22,7 +22,7 @@ const useItemsData = ({
         isPending,
         refetch,
     } = useQuery({
-        queryKey: ["user-items", filter],
+        queryKey: ["item", "list", filter],
         queryFn: async () => await getItems(filter),
         initialData: initialItems,
         staleTime: Infinity,

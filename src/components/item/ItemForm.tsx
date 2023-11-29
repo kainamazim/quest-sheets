@@ -1,6 +1,6 @@
 "use client";
 
-import { type FC, useContext, useState } from "react";
+import { type FC, useContext, useEffect, useState } from "react";
 
 import CheckSharpIcon from "@mui/icons-material/CheckSharp";
 import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
@@ -59,10 +59,16 @@ const ItemForm: FC<ItemFormProps> = ({
             setSnackbar({ message: "Title is required!", severity: "error" });
         } else {
             setError(false);
-            setItem(newItem);
+
             onSubmit(item);
         }
     };
+
+    useEffect(() => {
+        return () => {
+            setItem(newItem);
+        };
+    }, []);
 
     return (
         <Stack>
