@@ -1,5 +1,6 @@
+import type { Item } from "@prisma/client";
 import { type NextPage } from "next";
-import { notFound } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import UpdateItemPage from "@/content/(user)/items/UpdateItemPage";
 import getItemById from "@/services/item/getItemById";
@@ -11,11 +12,13 @@ interface UpdateItemProps {
 const UpdateItem: NextPage<UpdateItemProps> = async ({ params: { id } }) => {
     const item = await getItemById(Number(id));
 
+    const router = useRouter();
+
     if (item == null) {
-        notFound();
+        router.push("/login");
     }
 
-    return <UpdateItemPage item={item} />;
+    return <UpdateItemPage item={item as Item} />;
 };
 
 export default UpdateItem;
