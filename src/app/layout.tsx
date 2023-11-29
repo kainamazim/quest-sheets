@@ -15,6 +15,9 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
     return (
         <html lang="en">
+            <head>
+                <link rel="icon" type="image/png" href="/icon.png" />
+            </head>
             <body className={pullquoteText.className}>
                 <AppProvider>{children}</AppProvider>
             </body>
