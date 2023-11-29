@@ -52,7 +52,7 @@ const ProfileStep: FC<ProfileStepProps> = ({ sheet, roles, errors, setField }) =
                     defaultValue={sheet.name}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                         const newName = event.target.value;
-                        console.log({ newName });
+
                         setField("name", newName);
                     }}
                     autoFocus
@@ -77,7 +77,6 @@ const ProfileStep: FC<ProfileStepProps> = ({ sheet, roles, errors, setField }) =
                         <HitPointField
                             defaultValue={sheet.currentHitPoints ?? 0}
                             onChange={(newHitPoints) => {
-                                console.log({ newHitPoints });
                                 setField("currentHitPoints", newHitPoints);
                             }}
                         />
@@ -85,7 +84,6 @@ const ProfileStep: FC<ProfileStepProps> = ({ sheet, roles, errors, setField }) =
                         <AdventurePointField
                             defaultValue={sheet.currentAdventurePoints ?? 0}
                             onChange={(newAdventurePoints) => {
-                                console.log({ newAdventurePoints });
                                 setField(
                                     "currentAdventurePoints",
                                     newAdventurePoints,
