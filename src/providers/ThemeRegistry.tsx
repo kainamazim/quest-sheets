@@ -53,6 +53,9 @@ const theme = createTheme({
         },
 
         MuiFormControl: {
+            defaultProps: {
+                size: "small",
+            },
             styleOverrides: {
                 root: {
                     margin: 0,
