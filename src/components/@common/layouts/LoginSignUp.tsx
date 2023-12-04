@@ -3,15 +3,18 @@
 import React, { type FC, type PropsWithChildren } from "react";
 
 import { Container, Grid, Paper } from "@mui/material";
+import Image, { type ImageProps } from "next/image";
 
 interface LoginSignUpLayoutProps extends PropsWithChildren {
-    imageUrl: string;
+    imageSrc: ImageProps["src"];
+    imageAlt: string;
     imageSide: "right" | "left";
 }
 
 const LoginSignUpLayout: FC<LoginSignUpLayoutProps> = ({
     children,
-    imageUrl,
+    imageSrc,
+    imageAlt,
     imageSide,
 }) => {
     const image = (
@@ -21,14 +24,23 @@ const LoginSignUpLayout: FC<LoginSignUpLayoutProps> = ({
             sm={4}
             md={8}
             sx={{
-                backgroundImage: imageUrl,
-                backgroundRepeat: "no-repeat",
+                position: "relative",
                 backgroundColor: (t) => t.palette.grey[300],
-                backgroundBlendMode: "multiply",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
             }}
-        />
+        >
+            <Image
+                src={imageSrc}
+                alt={imageAlt}
+                quality={100}
+                fill
+                objectFit="cover"
+                objectPosition="center"
+                sizes="100vw"
+                style={{
+                    mixBlendMode: "multiply",
+                }}
+            />
+        </Grid>
     );
 
     return (

@@ -9,6 +9,9 @@ import BaseCard from "@/components/@common/display/BaseCard";
 import TextImageSection from "@/components/@common/display/TextImageSection";
 import { pullquoteText } from "@/styles/font";
 
+import questPicture from "../../public/quest-book-cover.jpg";
+import sheetPicture from "../../public/quest-paper-sheets.jpg";
+
 const bookContent = [
     {
         path: "/rules",
@@ -34,7 +37,7 @@ const HomePage = () => {
             }}
         >
             <TextImageSection
-                image={{ side: "right", url: "url(/quest-book-cover.jpg)" }}
+                image={{ side: "right", src: questPicture, alt: "quest book cover" }}
             >
                 <Stack
                     sx={{
@@ -81,7 +84,7 @@ const HomePage = () => {
                 </Stack>
             </TextImageSection>
             <TextImageSection
-                image={{ side: "left", url: "url(/quest-paper-sheets.jpg)" }}
+                image={{ side: "left", src: sheetPicture, alt: "quest paper sheets" }}
             >
                 <Stack
                     sx={{

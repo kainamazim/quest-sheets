@@ -15,6 +15,8 @@ import { LoginSignUpLayout } from "@/components/@common/layouts";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 import { signUpSchema } from "@/util/schema";
 
+import backgroundPicture from "../../public/horizon-group.png";
+
 type Form = Record<"username" | "password" | "confirmPassword", string>;
 
 type FormKeys = keyof Form;
@@ -82,7 +84,11 @@ const SignUpPage: FC = () => {
     };
 
     return (
-        <LoginSignUpLayout imageSide="right" imageUrl="url(/horizon-group.png)">
+        <LoginSignUpLayout
+            imageSide="right"
+            imageSrc={backgroundPicture}
+            imageAlt="Sign Up Background Image"
+        >
             <Stack
                 sx={{
                     padding: 4,

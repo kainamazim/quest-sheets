@@ -15,6 +15,8 @@ import { LoginSignUpLayout } from "@/components/@common/layouts";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 import { loginSchema } from "@/util/schema";
 
+import backgroundPicture from "../../public/castle.png";
+
 type Form = Record<"username" | "password", string>;
 
 type FormKeys = keyof Form;
@@ -80,7 +82,11 @@ const LoginPage: FC = () => {
     };
 
     return (
-        <LoginSignUpLayout imageSide="left" imageUrl="url(/castle.png)">
+        <LoginSignUpLayout
+            imageSide="left"
+            imageSrc={backgroundPicture}
+            imageAlt="Login Background Image"
+        >
             <Stack
                 sx={{
                     padding: 4,

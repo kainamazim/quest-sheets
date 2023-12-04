@@ -5,6 +5,11 @@ import { Stack, Typography } from "@mui/material";
 import TextImageSection from "@/components/@common/display/TextImageSection";
 import { pullquoteText } from "@/styles/font";
 
+import actionScenePicture from "../../../public/action-scene.png";
+import guidePicture from "../../../public/guide-image.png";
+import innerCastlePicture from "../../../public/inner-castle.png";
+import partyPicture from "../../../public/party.png";
+
 const BookRulesPage = () => {
     return (
         <Stack
@@ -14,7 +19,9 @@ const BookRulesPage = () => {
                 maxWidth: 1024,
             }}
         >
-            <TextImageSection image={{ side: "left", url: "url(/inner-castle.png)" }}>
+            <TextImageSection
+                image={{ side: "left", src: innerCastlePicture, alt: "Inner Castle" }}
+            >
                 <Stack
                     sx={{
                         paddingBlock: 4,
@@ -54,7 +61,9 @@ const BookRulesPage = () => {
                     </Typography>
                 </Stack>
             </TextImageSection>
-            <TextImageSection image={{ side: "right", url: "url(/party.png)" }}>
+            <TextImageSection
+                image={{ side: "right", src: partyPicture, alt: "RPG Party" }}
+            >
                 <Stack
                     sx={{
                         paddingBlock: 4,
@@ -92,7 +101,9 @@ const BookRulesPage = () => {
                 </Stack>
             </TextImageSection>
 
-            <TextImageSection image={{ side: "left", url: "url(/guide-image.png)" }}>
+            <TextImageSection
+                image={{ side: "left", src: guidePicture, alt: "The Guide" }}
+            >
                 <Stack
                     sx={{
                         paddingBlock: 4,
@@ -129,7 +140,11 @@ const BookRulesPage = () => {
             </TextImageSection>
 
             <TextImageSection
-                image={{ side: "right", url: "url(/action-scene.png)" }}
+                image={{
+                    side: "right",
+                    src: actionScenePicture,
+                    alt: "Action Scene",
+                }}
             >
                 <Stack
                     sx={{

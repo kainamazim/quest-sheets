@@ -1,13 +1,15 @@
 import { type FC, type PropsWithChildren } from "react";
 
 import { Grid, Paper } from "@mui/material";
+import Image, { type ImageProps } from "next/image";
 
 import useIsMobile from "@/hooks/useIsMobile";
 
 interface TextImageSectionProps extends PropsWithChildren {
     image: {
         side: "right" | "left";
-        url: string;
+        src: ImageProps["src"];
+        alt: ImageProps["alt"];
     };
 }
 
@@ -19,15 +21,24 @@ const TextImageSection: FC<TextImageSectionProps> = ({ children, image }) => {
             sm={4}
             md={5}
             sx={{
-                backgroundImage: image.url,
-                backgroundRepeat: "no-repeat",
+                position: "relative",
                 backgroundColor: (t) => t.palette.grey[300],
-                backgroundBlendMode: "multiply",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
                 minHeight: "200px",
             }}
-        />
+        >
+            <Image
+                src={image.src}
+                alt={image.alt}
+                quality={100}
+                fill
+                objectFit="cover"
+                objectPosition="center"
+                sizes="100vh"
+                style={{
+                    mixBlendMode: "multiply",
+                }}
+            />
+        </Grid>
     );
 
     const isMobile = useIsMobile();

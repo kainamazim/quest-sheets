@@ -11,6 +11,8 @@ import ItemAccordion from "@/components/item/ItemAccordion";
 import { type ItemViewCardProps } from "@/components/item/ItemViewCard";
 import { headingText, pullquoteText } from "@/styles/font";
 
+import treasurePicture from "../../../../public/treasure.png";
+
 interface TreasureCatalogPageProps {
     commonItems: Item[];
     uncommonItems: Item[];
@@ -60,7 +62,9 @@ const TreasureCatalogPage: FC<TreasureCatalogPageProps> = ({
                 maxWidth: 1024,
             }}
         >
-            <TextImageSection image={{ side: "right", url: "url(/treasure.png)" }}>
+            <TextImageSection
+                image={{ side: "right", src: treasurePicture, alt: "Treasures" }}
+            >
                 <Stack
                     sx={{
                         paddingBlock: 4,
