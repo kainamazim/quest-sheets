@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import RoleByTitlePage from "@/content/(book)/roles/RoleByTitlePage";
 import getFullRole from "@/services/role/getFullRole";
+import getManyRoles from "@/services/role/getManyRoles";
 
 interface RoleByTitleProps {
     params: { title: Role["title"] };
@@ -17,6 +18,12 @@ const RoleByTitle: NextPage<RoleByTitleProps> = async ({ params: { title } }) =>
     }
 
     return <RoleByTitlePage role={role} />;
+};
+
+export const generateStaticParams = async () => {
+    const roles = await getManyRoles();
+
+    return roles.map(({ title }) => ({ title }));
 };
 
 export default RoleByTitle;
