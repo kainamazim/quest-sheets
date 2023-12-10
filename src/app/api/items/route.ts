@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 
 import { type ItemFilterState } from "@/components/item/ItemFilter";
-import getItemsByFilter from "@/services/item/getItemsByFilter";
+import getItemsByFilter from "@/server/services/item/getItemsByFilter";
 
 const POST = async (request: NextRequest) => {
     const { filter } = (await request.json()) as { filter: ItemFilterState };

@@ -1,5 +1,5 @@
 import CustomItemsPage from "@/content/(user)/items/CustomItemsPage";
-import getItemsByFilter from "@/services/item/getItemsByFilter";
+import getItemsByFilter from "@/server/services/item/getItemsByFilter";
 
 const CustomItems = async () => {
     const items = await getItemsByFilter({

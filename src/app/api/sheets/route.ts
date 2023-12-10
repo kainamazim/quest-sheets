@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 
 import { type SheetFilterState } from "@/components/sheet/SheetFilter";
-import getSheetsByFilter from "@/services/sheet/getSheetsByFilter";
+import getSheetsByFilter from "@/server/services/sheet/getSheetsByFilter";
 
 const POST = async (request: NextRequest) => {
     const { filter } = (await request.json()) as { filter: SheetFilterState };

@@ -3,8 +3,8 @@ import { type NextPage } from "next";
 import { notFound } from "next/navigation";
 
 import RoleByTitlePage from "@/content/(book)/roles/RoleByTitlePage";
-import getFullRole from "@/services/role/getFullRole";
-import getManyRoles from "@/services/role/getManyRoles";
+import getFullRole from "@/server/services/role/getFullRole";
+import getManyRoles from "@/server/services/role/getManyRoles";
 
 interface RoleByTitleProps {
     params: { title: Role["title"] };

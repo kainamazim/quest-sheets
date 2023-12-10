@@ -1,5 +1,5 @@
 import TreasureCatalogPage from "@/content/(book)/treasure/TreasureCatalogPage";
-import prisma from "@/database/prisma";
+import prisma from "@/server/database/prisma";
 
 const fetchData = async () => {
     const commonItems = await prisma.item.findMany({

@@ -1,5 +1,5 @@
 import { type SheetFilterState } from "@/components/sheet/SheetFilter";
-import prisma from "@/database/prisma";
+import prisma from "@/server/database/prisma";
 import { type FullSheet } from "@/types";
 
 import getSession from "../user/getSession";

@@ -1,6 +1,6 @@
 import { type Item } from "@prisma/client";
 
-import prisma from "@/database/prisma";
+import prisma from "@/server/database/prisma";
 
 import getSession from "../user/getSession";
 

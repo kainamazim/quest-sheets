@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import prisma from "@/database/prisma";
-import getSession from "@/services/user/getSession";
+import prisma from "@/server/database/prisma";
+import getSession from "@/server/services/user/getSession";
 import { type FullSheet } from "@/types";
 
 const POST = async (request: NextRequest) => {

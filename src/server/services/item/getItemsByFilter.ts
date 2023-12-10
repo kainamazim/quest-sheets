@@ -1,7 +1,7 @@
 import type { Item, Prisma } from "@prisma/client";
 
 import { type ItemFilterState } from "@/components/item/ItemFilter";
-import prisma from "@/database/prisma";
+import prisma from "@/server/database/prisma";
 
 import getSession from "../user/getSession";
 

@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import getUserSingleSheet from "@/services/sheet/getUserSingleSheet";
+import getUserSingleSheet from "@/server/services/sheet/getUserSingleSheet";
 import { type FullSheet } from "@/types";
 
 const POST = async (request: NextRequest) => {

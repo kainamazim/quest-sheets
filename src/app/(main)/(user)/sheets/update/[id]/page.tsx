@@ -1,8 +1,8 @@
 import { type NextPage } from "next";
 
 import UpdateSheetPage from "@/content/(user)/sheets/UpdateSheetPage";
-import getAvailableItems from "@/services/item/getAvailableItems";
-import getManyRoles from "@/services/role/getManyRoles";
+import getAvailableItems from "@/server/services/item/getAvailableItems";
+import getManyRoles from "@/server/services/role/getManyRoles";
 
 const fetchData = async () => {
     const roles = await getManyRoles();

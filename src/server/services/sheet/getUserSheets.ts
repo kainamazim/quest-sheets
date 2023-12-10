@@ -1,16 +1,13 @@
-import prisma from "@/database/prisma";
+import prisma from "@/server/database/prisma";
 import { type FullSheet } from "@/types";
 
 import getSession from "../user/getSession";
 
-const getUserSingleSheet = async (
-    sheetId: FullSheet["id"],
-): Promise<FullSheet | null> => {
+const getUserSheets = async (): Promise<FullSheet[]> => {
     const session = await getSession();
 
-    const sheet = await prisma.characterSheet.findFirst({
+    const userSheets = await prisma.characterSheet.findMany({
         where: {
-            id: sheetId,
             authorId: session.user.id,
         },
         include: {
@@ -20,7 +17,7 @@ const getUserSingleSheet = async (
         },
     });
 
-    return sheet;
+    return userSheets;
 };
 
-export default getUserSingleSheet;
+export default getUserSheets;

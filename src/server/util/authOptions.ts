@@ -3,7 +3,7 @@ import { type NextAuthOptions, type RequestInternal, type User } from "next-auth
 import { type JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import prisma from "@/database/prisma";
+import prisma from "../database/prisma";
 
 const authOptions: NextAuthOptions = {
     session: {

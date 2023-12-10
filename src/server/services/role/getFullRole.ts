@@ -1,6 +1,6 @@
 import { type Role } from "@prisma/client";
 
-import prisma from "@/database/prisma";
+import prisma from "@/server/database/prisma";
 import { type FullRole } from "@/types";
 
 const getFullRole = async (roleTitle: Role["title"]): Promise<FullRole | null> => {

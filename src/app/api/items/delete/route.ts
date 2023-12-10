@@ -1,7 +1,7 @@
 import { type Item } from "@prisma/client";
 import { type NextRequest, NextResponse } from "next/server";
 
-import prisma from "@/database/prisma";
+import prisma from "@/server/database/prisma";
 
 const POST = async (request: NextRequest) => {
     const { itemId } = (await request.json()) as { itemId: Item["id"] };
