@@ -48,7 +48,7 @@
         "typescript": "^5.2.2"
     },
     "prisma": {
-        "schema": "src/database/schema.prisma",
-        "seed": "ts-node src/database/seeds/main.ts"
+        "schema": "src/server/database/schema.prisma",
+        "seed": "ts-node src/server/database/seeds/main.ts"
     }
 }
