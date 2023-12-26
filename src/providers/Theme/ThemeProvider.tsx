@@ -27,21 +27,26 @@ interface ColorModeContextInterface {
 
 const COLOR_MODE_KEY = "color-mode";
 
-const defaultColorMode = typeof window !== 'undefined'
-    ? (localStorage.getItem(COLOR_MODE_KEY) as PaletteMode | null)
-    : "light";
+const getDefaultColorMode = () =>
+    typeof window !== "undefined"
+        ? (localStorage.getItem(COLOR_MODE_KEY) as PaletteMode | null)
+        : "light";
 
 export const ColorModeContext = createContext<ColorModeContextInterface>({
-    colorMode: defaultColorMode ?? "light",
+    colorMode: getDefaultColorMode() ?? "light",
     toggleColorMode: () => {},
 });
 
 const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
     const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
+    const defaultColorMode = getDefaultColorMode();
+
     const [mode, setMode] = useState<PaletteMode>(
         defaultColorMode ?? (prefersDarkMode ? "dark" : "light"),
     );
+
+    console.log({ defaultColorMode });
 
     const colorMode = useMemo(
         () => ({
@@ -66,7 +71,7 @@ const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
     );
 
     useEffect(() => {
-        if (typeof window !== 'undefined') localStorage.setItem(COLOR_MODE_KEY, mode);
+        if (typeof window !== "undefined") localStorage.setItem(COLOR_MODE_KEY, mode);
     }, [mode]);
 
     return (
