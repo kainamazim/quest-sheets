@@ -6,7 +6,8 @@ import { AppBar, IconButton, Stack, Toolbar } from "@mui/material";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 
 import Logo from "../../Logo";
-import ThemeSwitch from "../../ThemeSwitch";
+
+// import ThemeSwitch from "../../ThemeSwitch";
 
 export const headerHeight: string = "64px";
 
@@ -31,12 +32,14 @@ const Header = () => {
                 >
                     <MenuSharpIcon />
                 </IconButton>
-                
+
                 <Stack direction={"row"} flexGrow={1} justifyContent={"center"}>
                     <Logo />
                 </Stack>
 
-                <ThemeSwitch />
+                {/** 
+                    <ThemeSwitch />
+                    */}
             </Toolbar>
         </AppBar>
     );

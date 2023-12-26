@@ -46,8 +46,6 @@ const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
         defaultColorMode ?? (prefersDarkMode ? "dark" : "light"),
     );
 
-    console.log({ defaultColorMode });
-
     const colorMode = useMemo(
         () => ({
             colorMode: mode,
