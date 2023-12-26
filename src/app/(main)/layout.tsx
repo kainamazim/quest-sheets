@@ -18,7 +18,8 @@ const Wrapper: FC<PropsWithChildren> = ({ children }) => {
     return (
         <Box
             sx={{
-                backgroundColor: (theme) => theme.palette.grey[300],
+                backgroundColor: ({ palette }) =>
+                    palette.mode === "light" ? palette.grey[300] : palette.grey[800],
                 flexGrow: 1,
                 minHeight: "100vh",
                 marginTop: headerHeight,

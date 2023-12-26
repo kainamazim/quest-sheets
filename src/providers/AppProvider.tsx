@@ -6,7 +6,7 @@ import { SessionProvider } from "next-auth/react";
 
 import MainLayoutProvider from "./MainLayoutProvider";
 import QueryProvider from "./QueryProvider";
-import ThemeRegistry from "./ThemeRegistry";
+import {ThemeRegistry} from "./Theme";
 
 interface AppProviderProps {
     children: React.ReactNode;

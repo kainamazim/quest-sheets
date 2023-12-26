@@ -21,7 +21,7 @@ const RoleTag: FC<RoleTagProps> = ({ role, active = false }) => {
             sx={(theme) => ({
                 border: `solid 2px`,
                 cursor: "pointer",
-                backgroundColor: theme.palette.background.default,
+                backgroundColor: theme.palette.background.paper,
 
                 color: active ? theme.palette.text.primary : theme.palette.grey[500],
                 borderColor: active

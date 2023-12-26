@@ -18,7 +18,7 @@ const DamageTag: FC<DamageTagProps> = ({ damage }) => {
             title={"Damage"}
             sx={(theme) => ({
                 color: active ? theme.palette.error.main : theme.palette.grey[700],
-                backgroundColor: theme.palette.background.default,
+                backgroundColor: theme.palette.background.paper,
                 border: `${
                     active ? theme.palette.error.main : theme.palette.grey[700]
                 } solid 2px`,
