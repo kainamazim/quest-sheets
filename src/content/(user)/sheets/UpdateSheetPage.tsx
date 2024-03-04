@@ -1,9 +1,10 @@
 "use client";
 
-import { type FC, useEffect } from "react";
+import type { FC } from "react";
+import { useEffect } from "react";
 
 import { Box, CircularProgress, Stack } from "@mui/material";
-import { type Item } from "@prisma/client";
+import type { Item } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
@@ -11,7 +12,7 @@ import getSingleSheet from "@/api/sheets/getSingleSheet";
 import { PageTitle } from "@/components/@common/display";
 import SheetForm from "@/components/sheet/SheetForm/SheetForm";
 import useUpdateSheet from "@/hooks/useUpdateSheet";
-import { type FullRole, type FullSheet } from "@/types";
+import type { FullRole, FullSheet } from "@/types";
 
 interface UpdateSheetPageProps {
     roles: FullRole[];

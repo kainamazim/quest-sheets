@@ -3,9 +3,8 @@ import { useContext } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import updateSheet from "@/api/sheets/updateSheet";
-import type { NewSheet } from "@/components/sheet/SheetForm/SheetForm";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
-import { type FullSheet } from "@/types";
+import type { FullSheet, NewSheet } from "@/types";
 
 interface UseUpdateSheetProps {
     successCallback?: () => void;

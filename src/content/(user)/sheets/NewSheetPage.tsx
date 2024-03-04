@@ -9,9 +9,9 @@ import { useRouter } from "next/navigation";
 
 import createSheet from "@/api/sheets/createSheet";
 import { PageTitle } from "@/components/@common/display";
-import SheetForm, { type FormSheet } from "@/components/sheet/SheetForm/SheetForm";
+import SheetForm from "@/components/sheet/SheetForm/SheetForm";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
-import { type FullRole } from "@/types";
+import type { FormSheet, FullRole } from "@/types";
 
 interface NewSheetPageProps {
     roles: FullRole[];
