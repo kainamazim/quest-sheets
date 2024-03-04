@@ -1,6 +1,6 @@
 import { type Dispatch, type ReactNode, type SetStateAction, useState } from "react";
 
-interface UseStepsOutput {
+export interface UseStepsOutput {
     activeStep: number;
     setActiveStep: Dispatch<SetStateAction<number>>;
     handleNext: () => void;
