@@ -2,10 +2,9 @@ import { type FC } from "react";
 
 import { Stack } from "@mui/material";
 
-import { type FullRole } from "@/types";
+import type { FormSheet, FullRole, SetFormSheetField } from "@/types";
 
 import PathAccordion from "../../../role/learningPath/PathAccordion";
-import { type FormSheet, type SetFormSheetField } from "../SheetForm";
 
 interface AbilityStepProps {
     sheet: FormSheet;

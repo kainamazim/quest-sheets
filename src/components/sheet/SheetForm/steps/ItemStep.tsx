@@ -7,8 +7,7 @@ import { SectionAccordion } from "@/components/@common/display";
 import ItemList from "@/components/item/ItemList";
 import ItemViewCard from "@/components/item/ItemViewCard";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
-
-import { type FormSheet, type SetFormSheetField } from "../SheetForm";
+import type { FormSheet, SetFormSheetField } from "@/types";
 
 interface ItemStepProps {
     sheet: FormSheet;

@@ -8,12 +8,7 @@ import {
     HitPointField,
     RoleSelect,
 } from "@/components/@common/form";
-
-import {
-    type FormSheet,
-    type FormSheetErrors,
-    type SetFormSheetField,
-} from "../SheetForm";
+import type { FormSheet, FormSheetErrors, SetFormSheetField } from "@/types";
 
 interface ProfileStepProps {
     sheet: FormSheet;
