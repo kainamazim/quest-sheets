@@ -2,9 +2,9 @@ import { type FC } from "react";
 
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
 import { Badge, Tooltip } from "@mui/material";
-import { type CharacterSheet } from "@prisma/client";
 
 import { pullquoteText } from "@/styles/font";
+import { type CharacterSheet } from "@/types/data";
 
 interface HitPointTagProps {
     hitPoints: CharacterSheet["currentHitPoints"];

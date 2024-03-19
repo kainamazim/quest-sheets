@@ -1,12 +1,12 @@
 import React, { type FC } from "react";
 
 import { Box } from "@mui/material";
-import { type LearningPath } from "@prisma/client";
 
 import {
     SectionAccordion,
     type SectionAccordionProps,
 } from "@/components/@common/display";
+import { type LearningPath } from "@/types/data";
 
 import AbilityCard, { type AbilityCardProps } from "../ability/AbilityCard";
 

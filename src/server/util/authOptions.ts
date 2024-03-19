@@ -1,9 +1,8 @@
-import bcrypt from "bcrypt";
 import { type NextAuthOptions, type RequestInternal, type User } from "next-auth";
 import { type JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import prisma from "../database/prisma";
+import { loginUser } from "@/api";
 
 const authOptions: NextAuthOptions = {
     session: {
@@ -28,21 +27,9 @@ const authOptions: NextAuthOptions = {
             ) => {
                 if (credentials == null) throw new Error("Invalid Credentials");
 
-                const { username, password } = credentials;
+                const user = loginUser(credentials);
 
-                const user = await prisma.user.findFirst({
-                    where: { username },
-                });
-
-                if (user == null) throw new Error("User not found");
-
-                const isPasswordMatch = await bcrypt.compare(password, user.password);
-
-                if (!isPasswordMatch) throw new Error("Invalid Password");
-
-                const { password: hashedPasswrod, ...safeUser } = user;
-
-                return safeUser as unknown as User;
+                return user as unknown as User;
             },
         }),
     ],

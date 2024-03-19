@@ -3,7 +3,6 @@
 import { type FC, useContext } from "react";
 
 import { Stack } from "@mui/material";
-import { type Item } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
@@ -12,6 +11,7 @@ import { PageTitle } from "@/components/@common/display";
 import SheetForm from "@/components/sheet/SheetForm/SheetForm";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 import type { FormSheet, FullRole } from "@/types";
+import type { Item } from "@/types/data";
 
 interface NewSheetPageProps {
     roles: FullRole[];

@@ -5,7 +5,8 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { type SelectChangeEvent } from "@mui/material/Select";
-import { type Item } from "@prisma/client";
+
+import type { Item } from "@/types/data";
 
 import { RarityTag } from "../../tags";
 

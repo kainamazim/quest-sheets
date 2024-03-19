@@ -1,5 +1,5 @@
+import { getManyRoles } from "@/api";
 import BookRolesPage from "@/content/(book)/roles/BookRolesPage";
-import getManyRoles from "@/server/services/role/getManyRoles";
 
 const BookRoles = async () => {
     const roles = await getManyRoles();

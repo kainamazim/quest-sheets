@@ -1,6 +1,5 @@
-import type { User } from "@prisma/client";
-
 import api from "@/api";
+import type { User } from "@/types/data";
 
 export interface ChangeUserPasswordInput {
     userId: User["id"];

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import { type Item } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 
 import getItems from "@/api/items/geItems";
 import { type ItemFilterState, defaultFilter } from "@/components/item/ItemFilter";
+import type { Item } from "@/types/data";
 
 export interface UseItemsDataInput {
     initialFilter?: ItemFilterState;

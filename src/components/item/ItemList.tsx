@@ -1,9 +1,9 @@
 import { type FC, type ReactNode } from "react";
 
 import { CircularProgress, Divider, Stack } from "@mui/material";
-import { type Item } from "@prisma/client";
 
 import useItemsData, { type UseItemsDataInput } from "@/hooks/useItemsData";
+import type { Item } from "@/types/data";
 
 import ItemFilter from "./ItemFilter";
 

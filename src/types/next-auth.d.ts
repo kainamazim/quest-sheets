@@ -1,6 +1,7 @@
-import { type User } from "@prisma/client";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import NextAuth from "next-auth";
+
+import { type User } from "@/types/data";
 
 declare module "next-auth" {
     /**

@@ -4,7 +4,6 @@ import type { FC } from "react";
 import { useEffect, useState } from "react";
 
 import { Box, Stack } from "@mui/material";
-import type { Item, Role } from "@prisma/client";
 
 import useSteps from "@/hooks/useSteps";
 import type {
@@ -15,6 +14,7 @@ import type {
     NewSheet,
     SetFormSheetField,
 } from "@/types";
+import type { Item, Role } from "@/types/data";
 
 import SheetFormFooter from "./Footer";
 import Header, { labelSteps } from "./Header";

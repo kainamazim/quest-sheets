@@ -4,11 +4,11 @@ import { type FC } from "react";
 
 import EastSharpIcon from "@mui/icons-material/EastSharp";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import { type Role } from "@prisma/client";
 import Link from "next/link";
 
 import { PageTitle } from "@/components/@common/display";
 import BaseCard from "@/components/@common/display/BaseCard";
+import { type Role } from "@/types/data";
 
 interface BookRolesPageProps {
     roles: Role[];

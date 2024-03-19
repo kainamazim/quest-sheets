@@ -12,13 +12,13 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import { type User } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import { type Session } from "next-auth";
 import { ZodError } from "zod";
 
 import updateUser from "@/api/user/updateUser";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
+import { type User } from "@/types/data";
 import { usernameSchema } from "@/util/schema";
 
 interface ChangeUsernameFormProps {

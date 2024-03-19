@@ -2,7 +2,7 @@
 
 import { type FC } from "react";
 
-import { type Item } from "@prisma/client";
+import type { Item } from "@/types/data";
 
 import DefaultTag from "./DefaultTag";
 

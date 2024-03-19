@@ -4,12 +4,11 @@ import { type FC } from "react";
 
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 import { Button, Stack } from "@mui/material";
-import { type Role } from "@prisma/client";
 import { useRouter } from "next/navigation";
 
 import { PageTitle } from "@/components/@common/display";
 import SheetList from "@/components/sheet/SheetList";
-import { type FullSheet } from "@/types";
+import type { FullSheet, Role } from "@/types/data";
 
 interface CharacterSheetsPageProps {
     sheets: FullSheet[];

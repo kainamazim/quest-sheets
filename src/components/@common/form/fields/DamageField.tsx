@@ -1,7 +1,8 @@
 import { type FC, useState } from "react";
 
 import { Stack } from "@mui/material";
-import { type Item } from "@prisma/client";
+
+import type { Item } from "@/types/data";
 
 import { DamageTag } from "../../tags";
 import NumberField from "./NumberField";

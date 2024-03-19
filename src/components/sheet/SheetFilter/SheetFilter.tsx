@@ -3,10 +3,10 @@
 import { type Dispatch, type FC, type SetStateAction } from "react";
 
 import { Box, Button, Stack } from "@mui/material";
-import { type CharacterSheet, type Role } from "@prisma/client";
 
 import { SearchField } from "@/components/@common/form";
 import useIsMobile from "@/hooks/useIsMobile";
+import { type CharacterSheet, type Role } from "@/types/data";
 
 import RoleMultiSelect from "./RoleMultiSelect";
 import SheetSortSelect from "./SheetSortSelect";

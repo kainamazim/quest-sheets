@@ -1,9 +1,9 @@
 import { type FC } from "react";
 
 import { CircularProgress, Divider, Stack } from "@mui/material";
-import { type Role } from "@prisma/client";
 
 import useSheetsData, { type UseSheetsDataInput } from "@/hooks/useSheetsData";
+import { type Role } from "@/types/data";
 
 import SheetActionCard from "./SheetActionCard";
 import SheetFilter from "./SheetFilter";

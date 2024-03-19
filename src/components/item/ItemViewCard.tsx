@@ -1,8 +1,7 @@
 import React, { type FC } from "react";
 
-import { type Item } from "@prisma/client";
-
 import ViewCard, { type ViewCardProps } from "@/components/@common/display/ViewCard";
+import type { Item } from "@/types/data";
 
 import ItemTags from "./ItemTags";
 

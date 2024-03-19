@@ -1,7 +1,5 @@
 import React, { type FC } from "react";
 
-import { type Item } from "@prisma/client";
-
 import {
     AdventurePointTag,
     DamageTag,
@@ -9,6 +7,7 @@ import {
     RollTheDieTag,
     TreasureTag,
 } from "@/components/@common/tags";
+import type { Item } from "@/types/data";
 
 export interface ItemTagsProps {
     item: Item;

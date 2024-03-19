@@ -2,13 +2,13 @@ import { type FC, useContext } from "react";
 
 import { ContentCopySharp, DeleteSharp } from "@mui/icons-material";
 import EditSharp from "@mui/icons-material/EditSharp";
-import { type Item } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 import createItem from "@/api/items/createItem";
 import deleteItem from "@/api/items/deleteItem";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
+import type { Item } from "@/types/data";
 
 import { ActionCard } from "../@common/display";
 import { type ActionCardProps } from "../@common/display/ActionCard";

@@ -1,7 +1,6 @@
-import { type Item } from "@prisma/client";
-
 import api from "@/api";
 import { type FormItem } from "@/components/item/ItemForm";
+import type { Item } from "@/types/data";
 
 export type NewItem = Omit<Item, "id">;
 

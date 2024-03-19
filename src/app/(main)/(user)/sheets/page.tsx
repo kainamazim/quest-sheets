@@ -1,9 +1,8 @@
+import { getManyRoles, getManyUserSheets } from "@/api";
 import CharacterSheetsPage from "@/content/(user)/sheets/CharacterSheetsPage";
-import getManyRoles from "@/server/services/role/getManyRoles";
-import getSheetsByFilter from "@/server/services/sheet/getSheetsByFilter";
 
 const CharacterSheets = async () => {
-    const sheets = await getSheetsByFilter({
+    const sheets = await getManyUserSheets({
         name: "",
         roleIds: [],
         sortBy: "createdAt",

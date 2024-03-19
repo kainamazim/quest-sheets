@@ -1,11 +1,8 @@
-import axios from "axios";
-
-const api = axios.create({
-    timeout: 10000,
-    headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-    },
-});
+import api from "./api";
 
 export default api;
+
+export * from "./role.api";
+export * from "./sheet.api";
+export * from "./treasure.api";
+export * from "./user.api";

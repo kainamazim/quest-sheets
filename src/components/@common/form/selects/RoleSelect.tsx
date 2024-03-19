@@ -6,7 +6,8 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { type SelectChangeEvent } from "@mui/material/Select";
-import { type Role } from "@prisma/client";
+
+import { type Role } from "@/types/data";
 
 import { RoleTag } from "../../tags";
 

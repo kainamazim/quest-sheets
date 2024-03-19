@@ -1,17 +1,16 @@
-import { type Role } from "@prisma/client";
-import { type NextPage } from "next";
+import type { NextPage } from "next";
 import { notFound } from "next/navigation";
 
+import { getManyRoles, getRole } from "@/api";
 import RoleByTitlePage from "@/content/(book)/roles/RoleByTitlePage";
-import getFullRole from "@/server/services/role/getFullRole";
-import getManyRoles from "@/server/services/role/getManyRoles";
+import type { Role } from "@/types/data";
 
 interface RoleByTitleProps {
     params: { title: Role["title"] };
 }
 
 const RoleByTitle: NextPage<RoleByTitleProps> = async ({ params: { title } }) => {
-    const role = await getFullRole(title);
+    const role = await getRole(title);
 
     if (role == null) {
         notFound();

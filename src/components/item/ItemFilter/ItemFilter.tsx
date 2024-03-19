@@ -3,10 +3,10 @@
 import { type Dispatch, type FC, type SetStateAction } from "react";
 
 import { Box, Button, Stack } from "@mui/material";
-import { type Item } from "@prisma/client";
 
 import { SearchField } from "@/components/@common/form";
 import useIsMobile from "@/hooks/useIsMobile";
+import type { Item } from "@/types/data";
 
 import ItemAuthorSelect from "./ItemAuthorSelect";
 import ItemSortSelect from "./ItemSortSelect";

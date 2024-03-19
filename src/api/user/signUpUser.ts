@@ -1,8 +1,8 @@
-import { type User } from "@prisma/client";
-import { type PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { type AxiosError } from "axios";
 
 import api from "@/api";
+import { type User } from "@/types/data";
+import { type PrismaClientKnownRequestError } from "@/types/data/runtime/library";
 
 const signUpUser = async (username: User["username"], password: User["password"]) => {
     return await new Promise((resolve, reject) => {

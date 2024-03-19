@@ -1,13 +1,13 @@
 import { type FC, useContext } from "react";
 
 import { Stack } from "@mui/material";
-import { type Item } from "@prisma/client";
 
 import { SectionAccordion } from "@/components/@common/display";
 import ItemList from "@/components/item/ItemList";
 import ItemViewCard from "@/components/item/ItemViewCard";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 import type { FormSheet, SetFormSheetField } from "@/types";
+import type { Item } from "@/types/data";
 
 interface ItemStepProps {
     sheet: FormSheet;

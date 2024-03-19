@@ -5,9 +5,9 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { type SelectChangeEvent } from "@mui/material/Select";
-import { type Item } from "@prisma/client";
 
 import { RarityTag } from "@/components/@common/tags";
+import type { Item } from "@/types/data";
 
 const labelId = "item-rarity-label";
 

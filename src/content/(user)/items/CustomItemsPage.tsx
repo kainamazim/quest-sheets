@@ -4,13 +4,13 @@ import { type FC } from "react";
 
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 import { Button, Stack } from "@mui/material";
-import { type Item } from "@prisma/client";
 import { useRouter } from "next/navigation";
 
 import { PageTitle } from "@/components/@common/display";
 import ItemActionCard from "@/components/item/ItemActionCard";
 import { defaultFilter } from "@/components/item/ItemFilter";
 import ItemList from "@/components/item/ItemList";
+import type { Item } from "@/types/data";
 
 interface CustomItemsPageProps {
     items: Item[];

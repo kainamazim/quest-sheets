@@ -1,6 +1,5 @@
-import { type CharacterSheet } from "@prisma/client";
-
 import api from "@/api";
+import { type CharacterSheet } from "@/types/data";
 
 const deleteSheet = async (
     sheetId: CharacterSheet["id"],

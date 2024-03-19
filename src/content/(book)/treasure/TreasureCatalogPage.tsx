@@ -3,23 +3,16 @@
 import { type FC } from "react";
 
 import { Paper, Stack, Typography } from "@mui/material";
-import { type Item } from "@prisma/client";
 
+import type { GetTreasureOutput } from "@/api";
 import { PageTitle } from "@/components/@common/display";
 import TextImageSection from "@/components/@common/display/TextImageSection";
 import ItemAccordion from "@/components/item/ItemAccordion";
 import { type ItemViewCardProps } from "@/components/item/ItemViewCard";
 import { headingText, pullquoteText } from "@/styles/font";
+import type { Item } from "@/types/data";
 
 import treasurePicture from "../../../../public/treasure.png";
-
-interface TreasureCatalogPageProps {
-    commonItems: Item[];
-    uncommonItems: Item[];
-    rareItems: Item[];
-    legendaryItems: Item[];
-    supremeItems: Item[];
-}
 
 const itemRarities: Array<{ title: string; description: string }> = [
     {
@@ -44,12 +37,12 @@ const itemRarities: Array<{ title: string; description: string }> = [
     },
 ];
 
-const TreasureCatalogPage: FC<TreasureCatalogPageProps> = ({
-    commonItems,
-    uncommonItems,
-    rareItems,
-    legendaryItems,
-    supremeItems,
+const TreasureCatalogPage: FC<GetTreasureOutput> = ({
+    common: commonItems,
+    uncommon: uncommonItems,
+    rare: rareItems,
+    legendary: legendaryItems,
+    supreme: supremeItems,
 }) => {
     const getProps = (items: Item[]): ItemViewCardProps[] =>
         items.map((item) => ({ item, hideCheckbox: true }));

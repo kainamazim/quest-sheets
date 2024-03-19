@@ -3,7 +3,8 @@
 import { type FC, useState } from "react";
 
 import { Stack, Switch } from "@mui/material";
-import { type Item } from "@prisma/client";
+
+import type { Item } from "@/types/data";
 
 import { RollTheDieTag } from "../tags";
 

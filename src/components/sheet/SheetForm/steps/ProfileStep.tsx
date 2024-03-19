@@ -1,7 +1,6 @@
 import { type FC } from "react";
 
 import { Box, Stack, TextField } from "@mui/material";
-import { type Role } from "@prisma/client";
 
 import {
     AdventurePointField,
@@ -9,6 +8,7 @@ import {
     RoleSelect,
 } from "@/components/@common/form";
 import type { FormSheet, FormSheetErrors, SetFormSheetField } from "@/types";
+import { type Role } from "@/types/data";
 
 interface ProfileStepProps {
     sheet: FormSheet;

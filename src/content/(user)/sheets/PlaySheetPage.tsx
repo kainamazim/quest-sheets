@@ -18,7 +18,6 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import { type Ability, type Item } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 
 import getSingleSheet from "@/api/sheets/getSingleSheet";
@@ -37,6 +36,7 @@ import { rarityTagClass } from "@/components/@common/tags/RarityTag";
 import ItemTags from "@/components/item/ItemTags";
 import useUpdateSheet from "@/hooks/useUpdateSheet";
 import { type FullSheet } from "@/types";
+import { type Ability, type Item } from "@/types/data";
 
 interface PlaySheetPageProps {
     sheet: FullSheet;

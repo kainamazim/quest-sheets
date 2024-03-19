@@ -4,9 +4,9 @@ import { type FC, useContext, useEffect, useState } from "react";
 
 import CheckSharpIcon from "@mui/icons-material/CheckSharp";
 import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
-import { type Item } from "@prisma/client";
 
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
+import type { Item } from "@/types/data";
 
 import {
     ActivationCostField,

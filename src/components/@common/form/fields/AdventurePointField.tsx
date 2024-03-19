@@ -1,7 +1,8 @@
 import { type FC } from "react";
 
 import { Stack } from "@mui/material";
-import { type CharacterSheet } from "@prisma/client";
+
+import { type CharacterSheet } from "@/types/data";
 
 import { AdventurePointTag } from "../../tags";
 import NumberField from "./NumberField";

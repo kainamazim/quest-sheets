@@ -1,8 +1,7 @@
 import React, { type FC } from "react";
 
-import { type Ability } from "@prisma/client";
-
 import ViewCard, { type ViewCardProps } from "@/components/@common/display/ViewCard";
+import { type Ability } from "@/types/data";
 
 import { AdventurePointTag, RollTheDieTag } from "../../@common/tags";
 

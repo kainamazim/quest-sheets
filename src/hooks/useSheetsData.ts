@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import getSheets from "@/api/sheets/getSheets";
 import { type SheetFilterState, defaultFilter } from "@/components/sheet/SheetFilter";
-import { type FullSheet } from "@/types";
+import type { FullSheet } from "@/types/data";
 
 export interface UseSheetsDataInput {
     initialFilter?: SheetFilterState;

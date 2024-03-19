@@ -3,7 +3,6 @@
 import { type FC, useContext, useEffect } from "react";
 
 import { Box, CircularProgress, Stack } from "@mui/material";
-import { type Item } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
@@ -12,6 +11,7 @@ import updateItem from "@/api/items/updateItem";
 import { PageTitle } from "@/components/@common/display";
 import ItemForm, { type FormItem } from "@/components/item/ItemForm";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
+import type { Item } from "@/types/data";
 
 interface UpdateItemPageContentProps {
     item: Item;

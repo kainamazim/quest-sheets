@@ -2,7 +2,7 @@
 
 import { type FC } from "react";
 
-import type { CharacterSheet } from "@prisma/client";
+import type { CharacterSheet } from "@/types/data";
 
 import DefaultTag from "./DefaultTag";
 
