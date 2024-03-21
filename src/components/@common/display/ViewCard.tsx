@@ -9,7 +9,7 @@ import BaseCard from "./BaseCard";
 export interface ViewCardProps {
     title: string;
     description: string;
-    tags: ReactNode;
+    tags?: ReactNode;
 
     checked?: boolean;
     handleChange?: (checked: boolean) => void;
@@ -25,6 +25,7 @@ const ViewCard: FC<ViewCardProps> = ({
     return (
         <BaseCard
             sx={(theme) => ({
+                flexGrow: 1,
                 borderColor: checked ? theme.palette.primary.main : "",
                 transition: theme.transitions.create(["borderColor"], {
                     easing: theme.transitions.easing.sharp,

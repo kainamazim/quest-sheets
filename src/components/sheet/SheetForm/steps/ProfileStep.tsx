@@ -8,13 +8,13 @@ import {
     HitPointField,
     RoleSelect,
 } from "@/components/@common/form";
-import type { FormSheet, FormSheetErrors, SetFormSheetField } from "@/types";
+import type { FormSheet, FormSheetErrors, SetField } from "@/types";
 
 interface ProfileStepProps {
     sheet: FormSheet;
     roles: Role[];
     errors: FormSheetErrors;
-    setField: SetFormSheetField;
+    setField: SetField<FormSheet>;
 }
 
 const ProfileStep: FC<ProfileStepProps> = ({ sheet, roles, errors, setField }) => {

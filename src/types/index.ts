@@ -30,9 +30,6 @@ export interface NewSheet
 
 export type FormSheet = FullSheet | NewSheet;
 
-export type SetFormSheetField = <T extends keyof FullSheet>(
-    field: T,
-    value: FullSheet[T],
-) => void;
+export type SetField<K> = <T extends keyof K>(field: T, value: K[T]) => void;
 
 export type FormSheetErrors = Array<keyof NewSheet>;

@@ -1,14 +1,19 @@
 "use client";
 
-import { PersonAddAltSharp } from "@mui/icons-material";
+import type { FC } from "react";
+
+import { PersonAddAlt1Sharp } from "@mui/icons-material";
 import EastSharp from "@mui/icons-material/EastSharp";
 import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
 import BaseCard from "@/components/@common/display/BaseCard";
 import TextImageSection from "@/components/@common/display/TextImageSection";
+import NewSheetModal from "@/components/sheet/NewSheetModal";
 import { pullquoteText } from "@/styles/font";
+import type { FullRole } from "@/types";
 
+import newPlayerPicture from "../../public/new_player.jpg";
 import questPicture from "../../public/quest-book-cover.jpg";
 import sheetPicture from "../../public/quest-paper-sheets.jpg";
 
@@ -27,7 +32,11 @@ const bookContent = [
     },
 ];
 
-const HomePage = () => {
+export interface HomePageProps {
+    roles: FullRole[];
+}
+
+const HomePage: FC<HomePageProps> = ({ roles }) => {
     return (
         <Stack
             gap={3}
@@ -123,12 +132,52 @@ const HomePage = () => {
                         }}
                     >
                         <Button
-                            endIcon={<PersonAddAltSharp fontSize="small" />}
+                            endIcon={<PersonAddAlt1Sharp fontSize="small" />}
                             fullWidth
                         >
                             {"Sign Up"}
                         </Button>
                     </Link>
+                </Stack>
+            </TextImageSection>
+            <TextImageSection
+                image={{
+                    side: "right",
+                    src: newPlayerPicture,
+                    alt: "new player art",
+                }}
+            >
+                <Stack
+                    sx={{
+                        paddingBlock: 4,
+                        paddingInline: 3,
+
+                        gap: 1,
+                    }}
+                >
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            fontFamily: pullquoteText.style.fontFamily,
+                            fontWeight: 900,
+                            mb: 1,
+                        }}
+                    >
+                        {"Are you new to RPGs?"}
+                    </Typography>
+
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            fontSize: "1.25rem",
+                            mb: 4,
+                        }}
+                    >
+                        {
+                            "If you're new to role-playing games, you can start right away by clicking the button below and accessing the Character Creation Guide."
+                        }
+                    </Typography>
+                    <NewSheetModal roles={roles} />
                 </Stack>
             </TextImageSection>
             <Paper

@@ -13,7 +13,7 @@ import type {
     FullRole,
     FullSheet,
     NewSheet,
-    SetFormSheetField,
+    SetField,
 } from "@/types";
 
 import SheetFormFooter from "./Footer";
@@ -46,7 +46,7 @@ const SheetForm: FC<SheetFormProps> = ({
 }) => {
     const [sheet, setSheet] = useState(defaultSheet);
 
-    const setSheetField: SetFormSheetField = (field, value) => {
+    const setSheetField: SetField<FormSheet> = (field, value) => {
         setSheet((prev) => ({ ...prev, [field]: value }));
     };
 
