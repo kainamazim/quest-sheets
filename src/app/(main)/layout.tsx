@@ -2,10 +2,11 @@
 
 import { type FC, type PropsWithChildren, useContext } from "react";
 
-import { Box, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 import { usePathname } from "next/navigation";
 
 import { Header, Sidebar, headerHeight } from "@/components/@common/layouts";
+import BasePaper from "@/components/@common/layouts/BasePaper";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 
 const customPaperRoutes = ["/", "/rules", "/treasure"];
@@ -32,22 +33,7 @@ const Wrapper: FC<PropsWithChildren> = ({ children }) => {
             onClick={handleCloseSidebar}
             onKeyDown={handleCloseSidebar}
         >
-            {isCustomPaper ? (
-                children
-            ) : (
-                <Paper
-                    elevation={3}
-                    sx={{
-                        flexGrow: 1,
-                        maxWidth: 1024,
-
-                        paddingBlock: 4,
-                        paddingInline: 3,
-                    }}
-                >
-                    {children}
-                </Paper>
-            )}
+            {isCustomPaper ? children : <BasePaper>{children}</BasePaper>}
         </Box>
     );
 };

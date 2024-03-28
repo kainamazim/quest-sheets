@@ -2,11 +2,12 @@
 
 import { type FC } from "react";
 
-import { Paper, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { type Item } from "@prisma/client";
 
 import { PageTitle } from "@/components/@common/display";
 import TextImageSection from "@/components/@common/display/TextImageSection";
+import BasePaper from "@/components/@common/layouts/BasePaper";
 import ItemAccordion from "@/components/item/ItemAccordion";
 import { type ItemViewCardProps } from "@/components/item/ItemViewCard";
 import { headingText, pullquoteText } from "@/styles/font";
@@ -120,16 +121,7 @@ const TreasureCatalogPage: FC<TreasureCatalogPageProps> = ({
                 </Stack>
             </TextImageSection>
 
-            <Paper
-                elevation={3}
-                sx={{
-                    flexGrow: 1,
-                    maxWidth: 1024,
-
-                    paddingBlock: 4,
-                    paddingInline: 3,
-                }}
-            >
+            <BasePaper>
                 <Stack>
                     <PageTitle title="Treasure Catalog" />
                     <Stack gap={1}>
@@ -155,7 +147,7 @@ const TreasureCatalogPage: FC<TreasureCatalogPageProps> = ({
                         />
                     </Stack>
                 </Stack>
-            </Paper>
+            </BasePaper>
         </Stack>
     );
 };

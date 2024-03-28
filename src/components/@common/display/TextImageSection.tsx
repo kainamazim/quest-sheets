@@ -1,9 +1,11 @@
 import { type FC, type PropsWithChildren } from "react";
 
-import { Grid, Paper } from "@mui/material";
+import { Grid } from "@mui/material";
 import Image, { type ImageProps } from "next/image";
 
 import useIsMobile from "@/hooks/useIsMobile";
+
+import BasePaper from "../layouts/BasePaper";
 
 interface TextImageSectionProps extends PropsWithChildren {
     image: {
@@ -44,11 +46,10 @@ const TextImageSection: FC<TextImageSectionProps> = ({ children, image }) => {
     const isMobile = useIsMobile();
 
     return (
-        <Paper
-            elevation={3}
+        <BasePaper
             sx={{
-                flexGrow: 1,
-                maxWidth: 1024,
+                paddingBlock: 0,
+                paddingInline: 0,
             }}
         >
             <Grid
@@ -63,7 +64,7 @@ const TextImageSection: FC<TextImageSectionProps> = ({ children, image }) => {
                 </Grid>
                 {image.side === "right" && imageContent}
             </Grid>
-        </Paper>
+        </BasePaper>
     );
 };
 
