@@ -8,3 +8,4 @@ export type * from "./SectionAccordion";
 export { default as SnackbarAlert } from "./SnackbarAlert";
 export type * from "./SnackbarAlert";
 export { default as ViewCard } from "./ViewCard";
+export { default as Loading } from "./Loading";
