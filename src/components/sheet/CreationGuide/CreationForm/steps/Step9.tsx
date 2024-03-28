@@ -1,15 +1,15 @@
 import type { FC } from "react";
 
 import { Stack } from "@mui/material";
+import { type Role } from "@prisma/client";
 
 import TextSection from "@/components/@common/display/TextSection";
 import { PhraseField } from "@/components/@common/form";
-import { type FullRole } from "@/types";
 
-import type { NewSheetFormStepProps } from "../NewSheetFormProps";
+import type { NewSheetFormStepProps } from "../CreationFormProps";
 
 export interface Step9Props extends NewSheetFormStepProps {
-    roles: FullRole[];
+    roles: Role[];
 }
 
 const Step9: FC<Step9Props> = ({ sheet, roles }) => {

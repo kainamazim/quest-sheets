@@ -6,7 +6,7 @@ import DoubleSideSections from "@/components/@common/display/DoubleSideSections"
 import TextSection from "@/components/@common/display/TextSection";
 import { PhraseField } from "@/components/@common/form";
 
-import type { NewSheetFormStepProps } from "../NewSheetFormProps";
+import type { NewSheetFormStepProps } from "../CreationFormProps";
 import { SuggestionList } from "../fields";
 import { clothingOptions, movementOptions } from "../util";
 

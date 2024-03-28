@@ -1,16 +1,16 @@
 import type { FC } from "react";
 
 import { Stack } from "@mui/material";
+import type { Role } from "@prisma/client";
 
 import { ViewCard } from "@/components/@common/display";
 import DoubleSideSections from "@/components/@common/display/DoubleSideSections";
 import TextSection from "@/components/@common/display/TextSection";
-import { type FullRole } from "@/types";
 
-import type { NewSheetFormStepProps } from "../NewSheetFormProps";
+import type { NewSheetFormStepProps } from "../CreationFormProps";
 
 export interface Step2Props extends NewSheetFormStepProps {
-    roles: FullRole[];
+    roles: Role[];
 }
 
 const Step2: FC<Step2Props> = ({ sheet, setSheetField, roles }) => {

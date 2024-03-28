@@ -4,14 +4,13 @@ import type { FC } from "react";
 
 import { PersonAddAlt1Sharp } from "@mui/icons-material";
 import EastSharp from "@mui/icons-material/EastSharp";
-import { Box, Button, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
 import BaseCard from "@/components/@common/display/BaseCard";
 import TextImageSection from "@/components/@common/display/TextImageSection";
-import NewSheetModal from "@/components/sheet/NewSheetModal";
+import BasePaper from "@/components/@common/layouts/BasePaper";
 import { pullquoteText } from "@/styles/font";
-import type { FullRole } from "@/types";
 
 import newPlayerPicture from "../../public/new_player.jpg";
 import questPicture from "../../public/quest-book-cover.jpg";
@@ -32,11 +31,7 @@ const bookContent = [
     },
 ];
 
-export interface HomePageProps {
-    roles: FullRole[];
-}
-
-const HomePage: FC<HomePageProps> = ({ roles }) => {
+const HomePage: FC = () => {
     return (
         <Stack
             gap={3}
@@ -177,18 +172,18 @@ const HomePage: FC<HomePageProps> = ({ roles }) => {
                             "If you're new to role-playing games, you can start right away by clicking the button below and accessing the Character Creation Guide."
                         }
                     </Typography>
-                    <NewSheetModal roles={roles} />
+                    <Link
+                        href={`/sheets/creation-guide`}
+                        style={{
+                            color: "inherit",
+                            textDecoration: "none",
+                        }}
+                    >
+                        <Button fullWidth>{"Create My First Character"}</Button>
+                    </Link>
                 </Stack>
             </TextImageSection>
-            <Paper
-                elevation={3}
-                sx={{
-                    flexGrow: 1,
-                    maxWidth: 1024,
-                    paddingBlock: 4,
-                    paddingInline: 3,
-                }}
-            >
+            <BasePaper>
                 <Typography
                     variant="h4"
                     sx={{
@@ -262,7 +257,7 @@ const HomePage: FC<HomePageProps> = ({ roles }) => {
                         </BaseCard>
                     ))}
                 </Box>
-            </Paper>
+            </BasePaper>
         </Stack>
     );
 };

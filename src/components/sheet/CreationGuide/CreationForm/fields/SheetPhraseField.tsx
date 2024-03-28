@@ -6,7 +6,7 @@ import { PhraseField } from "@/components/@common/form";
 import type { PhraseFieldProps } from "@/components/@common/form/fields/PhraseField";
 import type { CharacterProfile } from "@/types/form";
 
-import type { NewSheetFormStepProps } from "../NewSheetFormProps";
+import type { NewSheetFormStepProps } from "../CreationFormProps";
 
 export type SheetPhraseContent =
     | (TextFieldProps & { field: keyof CharacterProfile })

@@ -1,10 +1,11 @@
 import { type FC } from "react";
 
 import { Divider, Stack } from "@mui/material";
+import { type Role } from "@prisma/client";
 import { useImmer } from "use-immer";
 
 import useSteps from "@/hooks/useSteps";
-import type { FullRole, SetField } from "@/types";
+import type { SetField } from "@/types";
 import type { CharacterProfile } from "@/types/form";
 
 import Footer from "./Footer";
@@ -34,11 +35,11 @@ export const labelSteps = [
     "Final",
 ];
 
-export interface NewSheetFormProps {
-    roles: FullRole[];
+export interface CreationFormProps {
+    roles: Role[];
 }
 
-const NewSheetForm: FC<NewSheetFormProps> = ({ roles }) => {
+const CreationForm: FC<CreationFormProps> = ({ roles }) => {
     const [sheet, setSheet] = useImmer<CharacterProfile>(defaultSheet);
 
     const setSheetField: SetField<CharacterProfile> = (field, value) => {
@@ -128,4 +129,4 @@ const NewSheetForm: FC<NewSheetFormProps> = ({ roles }) => {
     );
 };
 
-export default NewSheetForm;
+export default CreationForm;

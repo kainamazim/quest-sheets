@@ -9,7 +9,7 @@ import { Header, Sidebar, headerHeight } from "@/components/@common/layouts";
 import BasePaper from "@/components/@common/layouts/BasePaper";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 
-const customPaperRoutes = ["/", "/rules", "/treasure"];
+const customPaperRoutes = ["/", "/rules", "/treasure", "/sheets/creation-guide"];
 
 const Wrapper: FC<PropsWithChildren> = ({ children }) => {
     const { handleCloseSidebar } = useContext(MainLayoutContext);

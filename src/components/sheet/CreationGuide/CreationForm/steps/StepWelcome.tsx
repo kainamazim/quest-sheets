@@ -4,7 +4,7 @@ import { Stack } from "@mui/material";
 
 import TextSection from "@/components/@common/display/TextSection";
 
-import type { NewSheetFormStepProps } from "../NewSheetFormProps";
+import type { NewSheetFormStepProps } from "../CreationFormProps";
 
 export interface StepWelcomeProps extends NewSheetFormStepProps {}
 

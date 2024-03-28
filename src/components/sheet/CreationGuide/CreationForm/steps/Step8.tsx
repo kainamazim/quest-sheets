@@ -6,22 +6,22 @@ import DoubleSideSections from "@/components/@common/display/DoubleSideSections"
 import TextSection from "@/components/@common/display/TextSection";
 import { PhraseField } from "@/components/@common/form";
 
-import type { NewSheetFormStepProps } from "../NewSheetFormProps";
+import type { NewSheetFormStepProps } from "../CreationFormProps";
 import { SuggestionList } from "../fields";
-import { flawOptions } from "../util";
+import { dreamOptions } from "../util";
 
-export interface Step7Props extends NewSheetFormStepProps {}
+export interface Step8Props extends NewSheetFormStepProps {}
 
-const Step7: FC<Step7Props> = ({ sheet, setSheet }) => {
+const Step8: FC<Step8Props> = ({ sheet, setSheet }) => {
     return (
         <DoubleSideSections
             left={
                 <TextSection
                     content={[
                         {
-                            title: "Be vulnerable",
+                            title: "Dream big",
                             paragraphs: [
-                                "Nobody's perfect. Choose a flaw to make your character complicated and believable. Like your ideal, you're free to choose one of these suggestions or create your own.",
+                                "Finally, give your character a dream to work toward a reason that fuels their desire for adventure.",
                             ],
                         },
                     ]}
@@ -32,25 +32,29 @@ const Step7: FC<Step7Props> = ({ sheet, setSheet }) => {
                     <Stack gap={1}>
                         <PhraseField
                             phrase={[
-                                "but my ",
+                                "I dream of ",
                                 {
-                                    value: sheet.flaw,
+                                    value: sheet.dream,
                                     onChange: ({ target }) => {
                                         setSheet((prevSheet) => {
-                                            prevSheet.flaw = target.value;
+                                            prevSheet.dream = target.value;
                                         });
                                     },
-                                    placeholder: "flaw",
+                                    fullWidth: true,
+                                    sx: {
+                                        maxWidth: "30rem",
+                                    },
+                                    placeholder: "dream",
                                 },
-                                "side can get in my way.",
+                                ".",
                             ]}
                         />
                         <SuggestionList
-                            title={"flaw"}
-                            options={flawOptions}
+                            title={"dream"}
+                            options={dreamOptions}
                             handleChange={(option) => {
                                 setSheet((prevSheet) => {
-                                    prevSheet.flaw = option;
+                                    prevSheet.dream = option;
                                 });
                             }}
                         />
@@ -61,4 +65,4 @@ const Step7: FC<Step7Props> = ({ sheet, setSheet }) => {
     );
 };
 
-export default Step7;
+export default Step8;
