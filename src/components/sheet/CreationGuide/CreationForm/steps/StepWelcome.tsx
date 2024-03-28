@@ -31,8 +31,10 @@ const StepWelcome: FC<StepWelcomeProps> = () => {
                             title: "Welcome!",
                             paragraphs: [
                                 "This is the Character Creation Guide.",
-                                "Here you will receive ideas to help you fill in the blanks and create a unique and interesting character.",
-                                "You don't have to be familiar with role-playing games to create your first character. All you have to do is click the button below.",
+                                "You don't have to be familiar with role-playing games to have fun!",
+                                "Here you will access ideas to help you create a unique and interesting character.",
+                                "Whether you're a newcomer who wants to know the game, or an adept who wants to practice creating characters, this guide can be useful.",
+                                "All you have to do is click the button below.",
                             ],
                         },
                     ]}
