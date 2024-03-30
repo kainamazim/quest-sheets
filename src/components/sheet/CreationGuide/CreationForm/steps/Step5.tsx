@@ -43,6 +43,7 @@ const Step5: FC<Step5Props> = ({ sheet, setSheet }) => {
                                         });
                                     },
                                     placeholder: "short description",
+                                    autoFocus: true,
                                 },
                             ]}
                         />

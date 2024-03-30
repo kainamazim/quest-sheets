@@ -45,6 +45,7 @@ const Step8: FC<Step8Props> = ({ sheet, setSheet }) => {
                                         maxWidth: "30rem",
                                     },
                                     placeholder: "dream",
+                                    autoFocus: true,
                                 },
                                 ".",
                             ]}

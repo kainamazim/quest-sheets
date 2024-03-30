@@ -43,6 +43,7 @@ const Step4: FC<Step4Props> = ({ sheet, setSheet }) => {
                                         });
                                     },
                                     placeholder: "clothing",
+                                    autoFocus: true,
                                 },
                             ]}
                         />

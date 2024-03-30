@@ -37,6 +37,7 @@ const Step1: FC<Step1Props> = ({ sheet, setSheetField }) => {
                             "My name is ",
                             {
                                 field: "name",
+                                autoFocus: true,
                             },
                             "(",
                             {

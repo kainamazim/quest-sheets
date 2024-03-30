@@ -41,6 +41,7 @@ const Step7: FC<Step7Props> = ({ sheet, setSheet }) => {
                                         });
                                     },
                                     placeholder: "flaw",
+                                    autoFocus: true,
                                 },
                                 "side can get in my way.",
                             ]}

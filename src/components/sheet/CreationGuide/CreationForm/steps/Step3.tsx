@@ -46,6 +46,7 @@ const Step3: FC<Step3Props> = ({ sheet, setSheet }) => {
                                         prevSheet.appearance.body = target.value;
                                     });
                                 },
+                                autoFocus: true,
                                 placeholder: "body",
                                 sx: {
                                     width: "100%",

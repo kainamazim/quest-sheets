@@ -41,6 +41,7 @@ const Step6: FC<Step6Props> = ({ sheet, setSheet }) => {
                                         });
                                     },
                                     placeholder: "belief",
+                                    autoFocus: true,
                                 },
                             ]}
                         />
