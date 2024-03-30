@@ -7,7 +7,7 @@ import TextSection from "@/components/@common/display/TextSection";
 import { PhraseField } from "@/components/@common/form";
 
 import type { NewSheetFormStepProps } from "../CreationFormProps";
-import { SuggestionList } from "../fields";
+import { TraitOption } from "../fields";
 import { flawOptions } from "../util";
 
 export interface Step7Props extends NewSheetFormStepProps {}
@@ -29,7 +29,7 @@ const Step7: FC<Step7Props> = ({ sheet, setSheet }) => {
             }
             right={
                 <Stack gap={4}>
-                    <Stack gap={1}>
+                    <Stack gap={3}>
                         <PhraseField
                             phrase={[
                                 "but my ",
@@ -45,15 +45,19 @@ const Step7: FC<Step7Props> = ({ sheet, setSheet }) => {
                                 "side can get in my way.",
                             ]}
                         />
-                        <SuggestionList
-                            title={"flaw"}
-                            options={flawOptions}
-                            handleChange={(option) => {
-                                setSheet((prevSheet) => {
-                                    prevSheet.flaw = option;
-                                });
-                            }}
-                        />
+                        <Stack flexDirection={"row"} flexWrap={"wrap"} gap={2}>
+                            {flawOptions.map((flaw, index) => (
+                                <TraitOption
+                                    key={flaw.title + index}
+                                    trait={flaw}
+                                    handleClick={() => {
+                                        setSheet((prevSheet) => {
+                                            prevSheet.flaw = flaw.title;
+                                        });
+                                    }}
+                                />
+                            ))}
+                        </Stack>
                     </Stack>
                 </Stack>
             }

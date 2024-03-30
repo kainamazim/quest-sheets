@@ -6,6 +6,12 @@ export interface CharacterAppearance {
     movement: string;
 }
 
+export interface CharacterTrait {
+    title: string;
+    description: string;
+    example: string;
+}
+
 export interface CharacterHome {
     short_description: string;
     peculiarity: string;

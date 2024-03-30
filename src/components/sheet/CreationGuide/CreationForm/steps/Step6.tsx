@@ -7,7 +7,7 @@ import TextSection from "@/components/@common/display/TextSection";
 import { PhraseField } from "@/components/@common/form";
 
 import type { NewSheetFormStepProps } from "../CreationFormProps";
-import { SuggestionList } from "../fields";
+import { TraitOption } from "../fields";
 import { beliefOptions } from "../util";
 
 export interface Step6Props extends NewSheetFormStepProps {}
@@ -44,15 +44,19 @@ const Step6: FC<Step6Props> = ({ sheet, setSheet }) => {
                                 },
                             ]}
                         />
-                        <SuggestionList
-                            title={"belief"}
-                            options={beliefOptions}
-                            handleChange={(option) => {
-                                setSheet((prevSheet) => {
-                                    prevSheet.belief = option;
-                                });
-                            }}
-                        />
+                        <Stack flexDirection={"row"} flexWrap={"wrap"} gap={2}>
+                            {beliefOptions.map((belief, index) => (
+                                <TraitOption
+                                    key={belief.title + index}
+                                    trait={belief}
+                                    handleClick={() => {
+                                        setSheet((prevSheet) => {
+                                            prevSheet.belief = belief.title;
+                                        });
+                                    }}
+                                />
+                            ))}
+                        </Stack>
                     </Stack>
                 </Stack>
             }
