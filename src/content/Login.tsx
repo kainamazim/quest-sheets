@@ -52,9 +52,9 @@ const LoginPage: FC = () => {
                 });
 
                 router.push("/sheets");
-            } else {
+            } else if (error) {
                 setSnackbar({
-                    message: error + "!" ?? "",
+                    message: error + "!",
                     severity: "error",
                 });
                 setFormError({
