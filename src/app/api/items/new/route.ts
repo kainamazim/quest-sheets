@@ -5,9 +5,7 @@ import prisma from "@/server/database/prisma";
 import getSession from "@/server/services/user/getSession";
 
 const POST = async (request: NextRequest) => {
-    const {
-        item: { id, ...item },
-    } = (await request.json()) as { item: Item };
+    const { item } = (await request.json()) as { item: Item };
 
     const session = await getSession();
 

@@ -44,7 +44,7 @@ const ItemActionCard: FC<ItemActionCardProps> = ({ item, callback }) => {
     });
 
     const { mutate: copyItem } = useMutation<unknown, unknown, Item>({
-        mutationFn: async ({ id, ...newItem }) =>
+        mutationFn: async (newItem) =>
             await createItem({ ...newItem, title: newItem.title + " (Copy)" }),
         onSuccess: () => {
             setSnackbar({

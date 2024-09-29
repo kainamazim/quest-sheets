@@ -23,7 +23,7 @@ import { usernameSchema } from "@/util/schema";
 
 interface ChangeUsernameFormProps {
     user: Session["user"];
-    updateSession: (data?: any) => Promise<Session | null>;
+    updateSession: (data?: unknown) => Promise<Session | null>;
 }
 
 const ChangeUsernameForm: FC<ChangeUsernameFormProps> = ({ user, updateSession }) => {

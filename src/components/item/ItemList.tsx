@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from "react";
+import { type FC, type ReactElement } from "react";
 
 import { CircularProgress, Divider, Stack } from "@mui/material";
 import { type Item } from "@prisma/client";
@@ -11,7 +11,7 @@ interface ItemListProps extends UseItemsDataInput {
     renderItem: (
         item: Item,
         itemsState: ReturnType<typeof useItemsData>,
-    ) => ReactNode;
+    ) => ReactElement;
 }
 
 const ItemList: FC<ItemListProps> = ({ initialItems, initialFilter, renderItem }) => {

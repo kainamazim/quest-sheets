@@ -9,7 +9,7 @@ const TreasureTag: FC = () => {
     return (
         <Tooltip title={"Treasure"}>
             <Inventory2SharpIcon
-                sx={(theme) => ({
+                sx={() => ({
                     color: "#ffc107",
 
                     fontSize: 24,

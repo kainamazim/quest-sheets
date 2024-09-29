@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { type NextAuthOptions, type RequestInternal, type User } from "next-auth";
+import { type NextAuthOptions, User } from "next-auth";
 import { type JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -24,7 +24,6 @@ const authOptions: NextAuthOptions = {
             },
             authorize: async (
                 credentials: Record<"username" | "password", string> | undefined,
-                req: Pick<RequestInternal, "body" | "query" | "headers" | "method">,
             ) => {
                 if (credentials == null) throw new Error("Invalid Credentials");
 
@@ -40,9 +39,12 @@ const authOptions: NextAuthOptions = {
 
                 if (!isPasswordMatch) throw new Error("Invalid Password");
 
-                const { password: hashedPasswrod, ...safeUser } = user;
+                const safeUser: User = {
+                    id: user.id,
+                    username,
+                };
 
-                return safeUser as unknown as User;
+                return safeUser;
             },
         }),
     ],
@@ -57,7 +59,7 @@ const authOptions: NextAuthOptions = {
 
             return { ...token, ...user };
         },
-        session: async ({ session, token, trigger, newSession }) => {
+        session: async ({ session, token }) => {
             session.user = token as JWT & { id: number; username: string };
 
             return session;

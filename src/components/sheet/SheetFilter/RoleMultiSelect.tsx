@@ -42,7 +42,7 @@ const RoleMultiSelect: FC<RoleMultiSelectProps> = ({
                     value={selectedRoleIds as unknown as string}
                     label={label}
                     onChange={handleChange}
-                    renderValue={(selected) => {
+                    renderValue={() => {
                         const selectedRoles = roles.filter((role) =>
                             selectedRoleIds.includes(role.id),
                         );

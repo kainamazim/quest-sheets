@@ -21,7 +21,7 @@ const HitPointTag: FC<HitPointTagProps> = ({ hitPoints }) => {
                 <Badge
                     badgeContent={String(hitPoints)}
                     color={"error"}
-                    sx={(theme) => ({
+                    sx={() => ({
                         "& .MuiBadge-badge": {
                             lineHeight: 1,
                             top: 12,

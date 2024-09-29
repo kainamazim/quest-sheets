@@ -14,16 +14,23 @@ export async function POST(request: NextRequest) {
             },
         });
 
-        const { password: hashedPassword, ...result } = user;
+        const { id, createdAt, updatedAt } = user;
 
         return NextResponse.json(
             {
                 message: "user created",
-                user: result,
+                user: {
+                    id,
+                    username,
+                    createdAt,
+                    updatedAt,
+                },
             },
             { status: 201 },
         );
-    } catch (error: any) {
-        return NextResponse.json(error.message, { status: 500 });
+    } catch (error: unknown) {
+        return NextResponse.json((error as { message: string }).message, {
+            status: 500,
+        });
     }
 }

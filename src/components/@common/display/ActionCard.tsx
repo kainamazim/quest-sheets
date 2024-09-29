@@ -55,7 +55,7 @@ const ActionCard: FC<ActionCardProps> = ({
                 <Typography
                     variant="h6"
                     component="div"
-                    sx={(theme) => ({
+                    sx={() => ({
                         fontWeight: 500,
                         lineHeight: 1,
                         fontSize: "1.3rem",

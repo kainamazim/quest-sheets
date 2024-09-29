@@ -5,9 +5,18 @@ import getSession from "@/server/services/user/getSession";
 import { type FullSheet } from "@/types";
 
 const POST = async (request: NextRequest) => {
+    const { sheet: sheetData } = (await request.json()) as { sheet: FullSheet };
+
     const {
-        sheet: { id, abilities, items, role, ...formSheet },
-    } = (await request.json()) as { sheet: FullSheet };
+        id,
+        abilities,
+        items,
+        currentAdventurePoints,
+        currentHitPoints,
+        roleId,
+        description,
+        name,
+    } = sheetData;
 
     const session = await getSession();
 
@@ -16,7 +25,11 @@ const POST = async (request: NextRequest) => {
             id,
         },
         data: {
-            ...formSheet,
+            currentAdventurePoints,
+            currentHitPoints,
+            roleId,
+            description,
+            name,
             authorId: session.user.id,
             abilities: { set: abilities.map(({ id }) => ({ id })) },
             items: { set: items.map(({ id }) => ({ id })) },

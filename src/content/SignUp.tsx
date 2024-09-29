@@ -36,12 +36,12 @@ const SignUpPage: FC = () => {
 
     const [formError, setFormError] = useState<FormError>({});
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (): Promise<void> => {
         try {
             const { username, password } = signUpSchema.parse(form);
 
             signUpUser(username, password)
-                .then((response) => {
+                .then(() => {
                     setFormError({});
                     setSnackbar({
                         message: "Successfully signed up!",
@@ -55,7 +55,7 @@ const SignUpPage: FC = () => {
                     const { message } = error as Error;
 
                     setSnackbar({
-                        message: message + "!" ?? "",
+                        message,
                         severity: "error",
                     });
                     setFormError({

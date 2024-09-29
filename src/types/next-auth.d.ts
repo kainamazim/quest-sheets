@@ -1,4 +1,4 @@
-import { type User } from "@prisma/client";
+import { type User as PrismaUser } from "@prisma/client";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import NextAuth from "next-auth";
 
@@ -9,8 +9,13 @@ declare module "next-auth" {
     interface Session {
         user: {
             /** The user's postal address. */
-            id: User["id"];
-            username: User["username"];
+            id: PrismaUser["id"];
+            username: PrismaUser["username"];
         };
+    }
+
+    interface User {
+        id: PrismaUser["id"];
+        username: PrismaUser["username"];
     }
 }
