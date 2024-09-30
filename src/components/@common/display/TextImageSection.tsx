@@ -1,7 +1,7 @@
 import { type FC, type PropsWithChildren } from "react";
 
 import { Grid } from "@mui/material";
-import Image, { type ImageProps } from "next/image";
+import Image, { type ImageProps } from "next/legacy/image";
 
 import useIsMobile from "@/hooks/useIsMobile";
 

@@ -3,7 +3,7 @@
 import React, { type FC, type PropsWithChildren } from "react";
 
 import { Container, Grid2 as Grid, Paper } from "@mui/material";
-import Image, { type ImageProps } from "next/image";
+import Image, { type ImageProps } from "next/legacy/image";
 
 interface LoginSignUpLayoutProps extends PropsWithChildren {
     imageSrc: ImageProps["src"];
