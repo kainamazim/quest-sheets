@@ -4,8 +4,9 @@ import { useContext } from "react";
 import ArrowBackSharpIcon from "@mui/icons-material/ArrowBackSharp";
 import ArrowForwardSharpIcon from "@mui/icons-material/ArrowForwardSharp";
 import CheckSharpIcon from "@mui/icons-material/CheckSharp";
-import { Box, Button, CircularProgress } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
+import { SubmitButton } from "@/components/@common/form";
 import type { UseStepsOutput } from "@/hooks/useSteps";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 import type { FormSheet, FormSheetErrors, NewSheet } from "@/types";
@@ -93,22 +94,13 @@ const SheetFormFooter: FC<SheetFormFooterProps> = ({
                 {"Back"}
             </Button>
             {isLastStep ? (
-                <Button
+                <SubmitButton
+                    loading={loading}
                     onClick={handleSubmitClick}
-                    sx={{
-                        cursor: loading ? "wait" : "pointer",
-                    }}
-                    disabled={loading}
-                    endIcon={
-                        loading ? (
-                            <CircularProgress size={20} color="inherit" />
-                        ) : (
-                            <CheckSharpIcon />
-                        )
-                    }
+                    endIcon={<CheckSharpIcon />}
                 >
                     {"Submit"}
-                </Button>
+                </SubmitButton>
             ) : (
                 <Button
                     color="inherit"

@@ -4,14 +4,7 @@ import { type FC, useContext, useState } from "react";
 
 import CheckSharpIcon from "@mui/icons-material/CheckSharp";
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
-import {
-    Box,
-    Button,
-    CircularProgress,
-    Stack,
-    TextField,
-    Typography,
-} from "@mui/material";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { type User } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import { type Session } from "next-auth";
@@ -20,6 +13,8 @@ import { ZodError } from "zod";
 import updateUser from "@/api/user/updateUser";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 import { usernameSchema } from "@/util/schema";
+
+import { SubmitButton } from "../@common/form";
 
 interface ChangeUsernameFormProps {
     user: Session["user"];
@@ -115,24 +110,17 @@ const ChangeUsernameForm: FC<ChangeUsernameFormProps> = ({ user, updateSession }
                     },
                 }}
             >
-                <Button
+                <SubmitButton
                     onClick={() => {
                         if (isChange) {
                             handleSubmit();
                         } else setIsChange(true);
                     }}
                     disabled={isPending}
-                    endIcon={
-                        isChange &&
-                        (isPending ? (
-                            <CircularProgress size={"1rem"} color="inherit" />
-                        ) : (
-                            <CheckSharpIcon fontSize="small" />
-                        ))
-                    }
+                    endIcon={isChange && <CheckSharpIcon fontSize="small" />}
                 >
                     {isChange ? "Confirm Change" : "Change"}
-                </Button>
+                </SubmitButton>
                 {isChange && (
                     <Button
                         onClick={() => {

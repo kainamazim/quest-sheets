@@ -1,85 +1,61 @@
 "use client";
 
-import React, { type FC, useContext, useState } from "react";
+import React, { type FC, useContext } from "react";
+import { useForm } from "react-hook-form";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import LoginSharp from "@mui/icons-material/LoginSharp";
-import { Button, Stack, TextField, Typography } from "@mui/material";
-import { type SignInResponse, signIn } from "next-auth/react";
+import { Stack, Typography } from "@mui/material";
+import { useMutation } from "@tanstack/react-query";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ZodError } from "zod";
+import { z } from "zod";
 
 import Logo from "@/components/@common/Logo";
-import { PasswordField } from "@/components/@common/form";
+import { FormTextfield, SubmitButton } from "@/components/@common/form";
+import FormPasswordField from "@/components/@common/form/controllers/FormPasswordField";
 import { LoginSignUpLayout } from "@/components/@common/layouts";
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 import { loginSchema } from "@/util/schema";
 
 import backgroundPicture from "../../public/castle.png";
 
-type Form = Record<"username" | "password", string>;
-
-type FormKeys = keyof Form;
-
-type FormError = Partial<Record<FormKeys, boolean>>;
+type LoginData = z.infer<typeof loginSchema>;
 
 const LoginPage: FC = () => {
     const router = useRouter();
 
     const { setSnackbar } = useContext(MainLayoutContext);
 
-    const [form, setForm] = useState<Form>({ username: "", password: "" });
+    const { handleSubmit, control } = useForm<LoginData>({
+        resolver: zodResolver(loginSchema),
+    });
 
-    const [formError, setFormError] = useState<FormError>({});
-
-    const handleSubmit = async () => {
-        try {
-            const { username, password } = loginSchema.parse(form);
-
-            const response = await signIn("credentials", {
+    const { mutate, isPending } = useMutation({
+        mutationFn: ({ username, password }: LoginData) =>
+            signIn("credentials", {
                 username,
                 password,
                 redirect: false,
+            }),
+        onSuccess: () => {
+            setSnackbar({
+                message: "Successfully logged!",
+                severity: "success",
             });
 
-            const { ok, error } = response as SignInResponse;
+            router.push("/sheets");
+        },
+        onError: (error) => {
+            const errorMessage = error.message;
 
-            if (ok) {
-                setFormError({});
-                setSnackbar({
-                    message: "Successfully logged!",
-                    severity: "success",
-                });
-
-                router.push("/sheets");
-            } else if (error) {
-                setSnackbar({
-                    message: error + "!",
-                    severity: "error",
-                });
-                setFormError({
-                    username: error?.toLowerCase().includes("username"),
-                    password: error?.toLowerCase().includes("password"),
-                });
-            }
-        } catch (error: unknown) {
-            if (error instanceof ZodError) {
-                const { issues } = error;
-
-                const fields = issues.map(({ path }) => path[0]);
-
-                setFormError({
-                    username: fields.includes("username"),
-                    password: fields.includes("password"),
-                });
-
-                setSnackbar({
-                    message: issues[0].message,
-                    severity: "error",
-                });
-            }
-        }
-    };
+            setSnackbar({
+                message: errorMessage + "!",
+                severity: "error",
+            });
+        },
+    });
 
     return (
         <LoginSignUpLayout
@@ -100,56 +76,48 @@ const LoginPage: FC = () => {
 
                 <Stack gap={3}>
                     <Stack gap={2}>
-                        <TextField
+                        <FormTextfield
                             margin="normal"
                             fullWidth
                             id="username"
                             label="Username"
-                            name="username"
+                            name={"username"}
+                            control={control}
                             autoComplete="username"
-                            onChange={({ target }) => {
-                                setForm((prev) => ({
-                                    ...prev,
-                                    username: target.value,
-                                }));
-                            }}
                             autoFocus
-                            error={formError.username}
-                            inputProps={{
-                                minLength: 4,
-                                maxLength: 32,
+                            slotProps={{
+                                input: {
+                                    inputProps: {
+                                        minLength: 4,
+                                        maxLength: 32,
+                                    },
+                                },
                             }}
                         />
-                        <PasswordField
+                        <FormPasswordField
                             margin="normal"
                             fullWidth
                             name="password"
+                            control={control}
                             label="Password"
                             type="password"
                             id="password"
-                            onChange={({ target }) => {
-                                setForm((prev) => ({
-                                    ...prev,
-                                    password: target.value,
-                                }));
-                            }}
                             autoComplete="current-password"
-                            error={formError.password}
-                            inputProps={{
-                                minLength: 6,
-                                maxLength: 32,
-                            }}
                         />
                     </Stack>
-                    <Button
+                    <SubmitButton
+                        variant="contained"
                         onClick={() => {
-                            void handleSubmit();
+                            handleSubmit(({ username, password }) =>
+                                mutate({ username, password }),
+                            );
                         }}
+                        loading={isPending}
                         endIcon={<LoginSharp fontSize="small" />}
                         fullWidth
                     >
                         {"Login"}
-                    </Button>
+                    </SubmitButton>
                 </Stack>
                 <Link
                     href="/signup"

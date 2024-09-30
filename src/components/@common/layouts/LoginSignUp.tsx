@@ -2,7 +2,7 @@
 
 import React, { type FC, type PropsWithChildren } from "react";
 
-import { Container, Grid, Paper } from "@mui/material";
+import { Container, Grid2 as Grid, Paper } from "@mui/material";
 import Image, { type ImageProps } from "next/image";
 
 interface LoginSignUpLayoutProps extends PropsWithChildren {
@@ -19,10 +19,10 @@ const LoginSignUpLayout: FC<LoginSignUpLayoutProps> = ({
 }) => {
     const image = (
         <Grid
-            item
-            xs={false}
-            sm={4}
-            md={8}
+            size={{
+                sm: 4,
+                md: 8,
+            }}
             sx={{
                 position: "relative",
                 backgroundColor: (t) => t.palette.grey[300],
@@ -46,7 +46,16 @@ const LoginSignUpLayout: FC<LoginSignUpLayoutProps> = ({
     return (
         <Grid container component="main" sx={{ height: "100vh" }}>
             {imageSide === "left" && image}
-            <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square>
+            <Grid
+                size={{
+                    xs: 12,
+                    sm: 4,
+                    md: 8,
+                }}
+                component={Paper}
+                elevation={6}
+                square
+            >
                 <Container
                     sx={{
                         display: "flex",

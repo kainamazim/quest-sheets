@@ -3,7 +3,7 @@
 import { type FC, useContext, useEffect, useState } from "react";
 
 import CheckSharpIcon from "@mui/icons-material/CheckSharp";
-import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
+import { Box, Stack, TextField } from "@mui/material";
 import { type Item } from "@prisma/client";
 
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
@@ -13,6 +13,7 @@ import {
     DamageField,
     RaritySelect,
     RollTheDieSwitch,
+    SubmitButton,
 } from "../@common/form";
 
 interface ItemFormProps {
@@ -156,20 +157,14 @@ const ItemForm: FC<ItemFormProps> = ({
                     }}
                 />
             </Box>
-            <Button
-                sx={{ marginTop: 6, cursor: loading ? "wait" : "pointer" }}
+            <SubmitButton
+                loading={loading}
+                sx={{ marginTop: 6 }}
                 onClick={handleSubmit}
-                disabled={loading}
-                endIcon={
-                    loading ? (
-                        <CircularProgress size={20} color="inherit" />
-                    ) : (
-                        <CheckSharpIcon />
-                    )
-                }
+                endIcon={<CheckSharpIcon />}
             >
                 {"Submit"}
-            </Button>
+            </SubmitButton>
         </Stack>
     );
 };

@@ -1,15 +1,16 @@
-import { type FC, useState } from "react";
+import { useState } from "react";
+import { FieldValues } from "react-hook-form";
 
 import { VisibilityOffSharp, VisibilitySharp } from "@mui/icons-material";
-import {
-    IconButton,
-    InputAdornment,
-    TextField,
-    type TextFieldProps,
-    Tooltip,
-} from "@mui/material";
+import { IconButton, InputAdornment, Tooltip } from "@mui/material";
 
-const PasswordField: FC<TextFieldProps> = (props) => {
+import { FormTextfieldProps } from "./FormTextfield";
+
+const FormPasswordField = <T extends FieldValues>({
+    name,
+    control,
+    ...textFieldProps
+}: FormTextfieldProps<T>) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = () => {
@@ -17,8 +18,9 @@ const PasswordField: FC<TextFieldProps> = (props) => {
     };
 
     return (
-        <TextField
-            {...props}
+        <FormPasswordField
+            control={control}
+            name={name}
             type={showPassword ? "text" : "password"}
             slotProps={{
                 input: {
@@ -42,8 +44,9 @@ const PasswordField: FC<TextFieldProps> = (props) => {
                     },
                 },
             }}
+            {...textFieldProps}
         />
     );
 };
 
-export default PasswordField;
+export default FormPasswordField;

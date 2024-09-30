@@ -1,7 +1,7 @@
 import { type FC, useContext, useState } from "react";
 
 import CheckSharp from "@mui/icons-material/CheckSharp";
-import { Button, CircularProgress, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { type Session } from "next-auth";
@@ -13,7 +13,7 @@ import changeUserPassword, {
 import { MainLayoutContext } from "@/providers/MainLayoutProvider";
 import { changePasswordSchema } from "@/util/schema";
 
-import { PasswordField } from "../@common/form";
+import { PasswordField, SubmitButton } from "../@common/form";
 
 type Form = Record<"currentPassword" | "newPassword" | "confirmNewPassword", string>;
 
@@ -159,24 +159,18 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ user }) => {
                         maxLength: 32,
                     }}
                 />
-                <Button
+                <SubmitButton
+                    loading={isPending}
                     onClick={() => {
                         void handleSubmit();
                     }}
-                    disabled={isPending}
-                    endIcon={
-                        isPending ? (
-                            <CircularProgress size={"1rem"} color="inherit" />
-                        ) : (
-                            <CheckSharp fontSize="small" />
-                        )
-                    }
+                    endIcon={<CheckSharp fontSize="small" />}
                     sx={{
                         mt: 1,
                     }}
                 >
                     {"Confirm Change"}
-                </Button>
+                </SubmitButton>
             </Stack>
         </Stack>
     );

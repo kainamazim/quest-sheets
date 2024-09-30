@@ -1,6 +1,7 @@
 "use client";
 
 import { type FC, useEffect, useState } from "react";
+import React from "react";
 
 import BackHandSharpIcon from "@mui/icons-material/BackHandSharp";
 import BedtimeOffSharpIcon from "@mui/icons-material/BedtimeOffSharp";
@@ -9,7 +10,6 @@ import CheckSharp from "@mui/icons-material/CheckSharp";
 import NightsStaySharpIcon from "@mui/icons-material/NightsStaySharp";
 import {
     Box,
-    Button,
     CircularProgress,
     Grow,
     Paper,
@@ -27,7 +27,11 @@ import {
     PageSectionTitle,
     PageTitle,
 } from "@/components/@common/display";
-import { AdventurePointField, HitPointField } from "@/components/@common/form";
+import {
+    AdventurePointField,
+    HitPointField,
+    SubmitButton,
+} from "@/components/@common/form";
 import {
     AdventurePointTag,
     RarityTag,
@@ -347,22 +351,13 @@ const PlaySheetPageContent: FC<PlaySheetPageProps> = ({ sheet: defaultSheet }) =
                                 },
                             }}
                         >
-                            <Button
+                            <SubmitButton
+                                loading={loading}
                                 onClick={handleSubmit}
-                                disabled={loading}
-                                sx={{
-                                    cursor: loading ? "wait" : "pointer",
-                                }}
-                                endIcon={
-                                    loading ? (
-                                        <CircularProgress size={20} color="inherit" />
-                                    ) : (
-                                        <CheckSharp />
-                                    )
-                                }
+                                endIcon={<CheckSharp />}
                             >
                                 {"Submit"}
-                            </Button>
+                            </SubmitButton>
                         </Box>
                     </Stack>
 
