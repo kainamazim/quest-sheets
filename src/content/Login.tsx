@@ -39,21 +39,22 @@ const LoginPage: FC = () => {
                 password,
                 redirect: false,
             }),
-        onSuccess: () => {
-            setSnackbar({
-                message: "Successfully logged!",
-                severity: "success",
-            });
+        onSettled: (response) => {
+            if (response?.ok) {
+                setSnackbar({
+                    message: "Successfully logged!",
+                    severity: "success",
+                });
 
-            router.push("/sheets");
-        },
-        onError: (error) => {
-            const errorMessage = error.message;
+                router.push("/sheets");
+            } else {
+                const errorMessage = response?.error ?? "Unknown error";
 
-            setSnackbar({
-                message: errorMessage + "!",
-                severity: "error",
-            });
+                setSnackbar({
+                    message: errorMessage + "!",
+                    severity: "error",
+                });
+            }
         },
     });
 
@@ -74,54 +75,56 @@ const LoginPage: FC = () => {
                     <Logo />
                 </Stack>
 
-                <Stack gap={3}>
-                    <Stack gap={2}>
-                        <FormTextfield
-                            margin="normal"
-                            fullWidth
-                            id="username"
-                            label="Username"
-                            name={"username"}
-                            control={control}
-                            autoComplete="username"
-                            autoFocus
-                            slotProps={{
-                                input: {
-                                    inputProps: {
-                                        minLength: 4,
-                                        maxLength: 32,
+                <form
+                    onSubmit={handleSubmit(
+                        ({ username, password }) => {
+                            mutate({ username, password });
+                        },
+                        (error) => console.log({ error }),
+                    )}
+                >
+                    <Stack gap={3}>
+                        <Stack gap={2}>
+                            <FormTextfield
+                                margin="normal"
+                                fullWidth
+                                id="username"
+                                label="Username"
+                                name={"username"}
+                                control={control}
+                                autoComplete="username"
+                                autoFocus
+                                slotProps={{
+                                    input: {
+                                        inputProps: {
+                                            minLength: 4,
+                                            maxLength: 32,
+                                        },
                                     },
-                                },
-                            }}
-                        />
-                        <FormPasswordField
-                            margin="normal"
+                                }}
+                            />
+                            <FormPasswordField
+                                margin="normal"
+                                fullWidth
+                                name="password"
+                                control={control}
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                            />
+                        </Stack>
+                        <SubmitButton
+                            variant="contained"
+                            loading={isPending}
+                            endIcon={<LoginSharp fontSize="small" />}
                             fullWidth
-                            name="password"
-                            control={control}
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
+                        >
+                            {"Login"}
+                        </SubmitButton>
                     </Stack>
-                    <SubmitButton
-                        variant="contained"
-                        onClick={() => {
-                            console.log("AQUI");
-                            handleSubmit(
-                                ({ username, password }) =>
-                                    mutate({ username, password }),
-                                (error) => console.log({ error }),
-                            );
-                        }}
-                        loading={isPending}
-                        endIcon={<LoginSharp fontSize="small" />}
-                        fullWidth
-                    >
-                        {"Login"}
-                    </SubmitButton>
-                </Stack>
+                </form>
+
                 <Link
                     href="/signup"
                     style={{ color: "inherit", textDecoration: "none" }}
