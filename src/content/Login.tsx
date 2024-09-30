@@ -108,8 +108,11 @@ const LoginPage: FC = () => {
                     <SubmitButton
                         variant="contained"
                         onClick={() => {
-                            handleSubmit(({ username, password }) =>
-                                mutate({ username, password }),
+                            console.log("AQUI");
+                            handleSubmit(
+                                ({ username, password }) =>
+                                    mutate({ username, password }),
+                                (error) => console.log({ error }),
                             );
                         }}
                         loading={isPending}

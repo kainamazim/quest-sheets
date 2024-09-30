@@ -31,6 +31,7 @@ const themeOptions: ThemeOptions = {
         MuiTextField: {
             defaultProps: {
                 size: "small",
+                variant: "filled",
             },
             styleOverrides: {
                 root: {

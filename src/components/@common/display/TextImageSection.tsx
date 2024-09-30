@@ -1,7 +1,7 @@
 import { type FC, type PropsWithChildren } from "react";
 
-import { Grid } from "@mui/material";
-import Image, { type ImageProps } from "next/legacy/image";
+import { Grid2 as Grid } from "@mui/material";
+import Image, { type ImageProps } from "next/image";
 
 import useIsMobile from "@/hooks/useIsMobile";
 
@@ -18,10 +18,11 @@ interface TextImageSectionProps extends PropsWithChildren {
 const TextImageSection: FC<TextImageSectionProps> = ({ children, image }) => {
     const imageContent = (
         <Grid
-            item
-            xs={12}
-            sm={4}
-            md={5}
+            size={{
+                xs: 12,
+                sm: 4,
+                md: 5,
+            }}
             sx={{
                 position: "relative",
                 backgroundColor: (t) => t.palette.grey[300],
@@ -32,12 +33,12 @@ const TextImageSection: FC<TextImageSectionProps> = ({ children, image }) => {
                 src={image.src}
                 alt={image.alt}
                 quality={100}
-                fill
-                objectFit="cover"
-                objectPosition="center"
-                sizes="100vh"
+                layout="fill"
                 style={{
                     mixBlendMode: "multiply",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    width: "100%",
                 }}
             />
         </Grid>
@@ -59,7 +60,16 @@ const TextImageSection: FC<TextImageSectionProps> = ({ children, image }) => {
                 }
             >
                 {image.side === "left" && imageContent}
-                <Grid item xs={12} sm={8} md={7} flexGrow={1}>
+                <Grid
+                    size={{
+                        xs: 12,
+                        sm: 8,
+                        md: 7,
+                    }}
+                    sx={{
+                        flexGrow: 1,
+                    }}
+                >
                     {children}
                 </Grid>
                 {image.side === "right" && imageContent}

@@ -20,7 +20,8 @@ const LoginSignUpLayout: FC<LoginSignUpLayoutProps> = ({
     const image = (
         <Grid
             size={{
-                sm: 4,
+                xs: 0,
+                sm: 5,
                 md: 8,
             }}
             sx={{
@@ -31,13 +32,14 @@ const LoginSignUpLayout: FC<LoginSignUpLayoutProps> = ({
             <Image
                 src={imageSrc}
                 alt={imageAlt}
-                quality={100}
-                fill
-                objectFit="cover"
-                objectPosition="center"
                 sizes="100vw"
+                layout="fill"
                 style={{
                     mixBlendMode: "multiply",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    width: "100%",
+                    height: "auto",
                 }}
             />
         </Grid>
@@ -49,8 +51,8 @@ const LoginSignUpLayout: FC<LoginSignUpLayoutProps> = ({
             <Grid
                 size={{
                     xs: 12,
-                    sm: 4,
-                    md: 8,
+                    sm: 7,
+                    md: 4,
                 }}
                 component={Paper}
                 elevation={6}

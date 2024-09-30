@@ -4,7 +4,7 @@ import { FieldValues } from "react-hook-form";
 import { VisibilityOffSharp, VisibilitySharp } from "@mui/icons-material";
 import { IconButton, InputAdornment, Tooltip } from "@mui/material";
 
-import { FormTextfieldProps } from "./FormTextfield";
+import FormTextfield, { FormTextfieldProps } from "./FormTextfield";
 
 const FormPasswordField = <T extends FieldValues>({
     name,
@@ -18,7 +18,7 @@ const FormPasswordField = <T extends FieldValues>({
     };
 
     return (
-        <FormPasswordField
+        <FormTextfield
             control={control}
             name={name}
             type={showPassword ? "text" : "password"}
