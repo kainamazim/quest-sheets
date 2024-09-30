@@ -21,30 +21,25 @@ const FormPasswordField = <T extends FieldValues>({
         <FormTextfield
             control={control}
             name={name}
+            {...textFieldProps}
             type={showPassword ? "text" : "password"}
             slotProps={{
                 input: {
-                    inputProps: {
-                        endAdornment: (
-                            <InputAdornment position="end">
-                                <Tooltip title={showPassword ? "Hide" : "Show"}>
-                                    <IconButton
-                                        onClick={handleShowPassword}
-                                        size="small"
-                                    >
-                                        {showPassword ? (
-                                            <VisibilityOffSharp fontSize="small" />
-                                        ) : (
-                                            <VisibilitySharp fontSize="small" />
-                                        )}
-                                    </IconButton>
-                                </Tooltip>
-                            </InputAdornment>
-                        ),
-                    },
+                    endAdornment: (
+                        <InputAdornment position="end">
+                            <Tooltip title={showPassword ? "Hide" : "Show"}>
+                                <IconButton onClick={handleShowPassword} size="small">
+                                    {showPassword ? (
+                                        <VisibilityOffSharp fontSize="small" />
+                                    ) : (
+                                        <VisibilitySharp fontSize="small" />
+                                    )}
+                                </IconButton>
+                            </Tooltip>
+                        </InputAdornment>
+                    ),
                 },
             }}
-            {...textFieldProps}
         />
     );
 };
