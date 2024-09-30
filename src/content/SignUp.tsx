@@ -162,6 +162,7 @@ const SignUpPage: FC = () => {
                         />
                     </Stack>
                     <Button
+                        variant="contained"
                         onClick={() => {
                             void handleSubmit();
                         }}
